@@ -1136,41 +1136,54 @@
       }
 
       // Display the current challenge
+      // Display the current challenge
+      // Display the current challenge
       function displayChallenge() {
         const display = document.getElementById("conjugationDisplay");
         const verbData = verbDatabase[currentVerb];
 
-        const regularityHint = settings.showRegularityHint
-          ? `<div style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px;">
-            ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
-          </div>`
-          : "";
-
         display.innerHTML = `
-          <div class="verb-prompt">
-            ${currentVerb}
-            <span class="speaker-icon" onclick="pronounceWord('${currentVerb}')" title="Pronounce verb">🔊</span>
-            <span class="dict-icon" onclick="openConjugation('${currentVerb}')" title="View full conjugation">📖</span>
-          </div>
-          <div style="font-size: 1.1em; color: #6c757d; margin-bottom: 15px;">
-            ${verbData.translation}
-          </div>
-          ${regularityHint}
-          <div class="conjugation-prompt">
-            ${tenseNames[currentTense]} - ${persons[currentPerson]}
-          </div>
-          <div class="answer-section">
-            <input type="text" class="answer-input" id="answerInput" 
-                   placeholder="Type your answer..." onkeypress="handleKeyPress(event)">
-          </div>
-          <div class="controls" style="margin-top: 15px;">
-            <button class="btn" onclick="checkAnswer()">Check Answer</button>
-            <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
-          </div>
-        `;
+    <div class="verb-prompt">
+      ${currentVerb}
+      <span class="speaker-icon" onclick="pronounceWord('${currentVerb}')" title="Pronounce verb">🔊</span>
+      <span class="dict-icon" onclick="openConjugation('${currentVerb}')" title="View full conjugation">📖</span>
+    </div>
+    <div style="font-size: 1.1em; color: #6c757d; margin-bottom: 15px;">
+      ${verbData.translation}
+    </div>
+    <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: none;">
+      ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
+    </div>
+    <div class="conjugation-prompt">
+      ${tenseNames[currentTense]} - ${persons[currentPerson]}
+    </div>
+    <div class="answer-section">
+      <input type="text" class="answer-input" id="answerInput" 
+             placeholder="Type your answer..." onkeypress="handleKeyPress(event)">
+    </div>
+    <div class="controls" style="margin-top: 15px;">
+      <button class="btn" onclick="checkAnswer()">Check Answer</button>
+      <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
+      <button class="btn btn-secondary" onclick="toggleRegularityHint()">Show Hint</button>
+    </div>
+  `;
 
         // Focus on input
         document.getElementById("answerInput").focus();
+      }
+
+      // Toggle regularity hint visibility
+      function toggleRegularityHint() {
+        const hint = document.getElementById("regularityHint");
+        const button = event.target;
+
+        if (hint.style.display === "none") {
+          hint.style.display = "block";
+          button.textContent = "Hide Hint";
+        } else {
+          hint.style.display = "none";
+          button.textContent = "Show Hint";
+        }
       }
 
       // Handle Enter key press
