@@ -1591,13 +1591,20 @@
       }
 
       // Get available tenses based on conjugation level setting
+      // Update getAvailableTenses to handle empty conjugations
       function getAvailableTenses(verb) {
         const verbData = verbDatabase[verb];
         const availableForLevel = conjugationTypes[settings.conjugationLevel];
 
-        return availableForLevel.filter(
-          (tense) => verbData.conjugations[tense] !== undefined
-        );
+        return availableForLevel.filter((tense) => {
+          const conjugation = verbData.conjugations[tense];
+          if (!conjugation) return false;
+
+          // Check if at least one person has a valid conjugation (not "-")
+          return Object.values(conjugation).some(
+            (form) => form && form !== "-"
+          );
+        });
       }
 
       // Get new random verb conjugation challenge
@@ -1656,6 +1663,18 @@
       function displayChallenge() {
         const display = document.getElementById("conjugationDisplay");
         const verbData = verbDatabase[currentVerb];
+
+        // Check if this tense/person combination exists
+        const conjugation = verbData.conjugations[currentTense];
+        if (
+          !conjugation ||
+          !conjugation[currentPerson] ||
+          conjugation[currentPerson] === "-"
+        ) {
+          // Skip this combination and get a new one
+          getNewVerb();
+          return;
+        }
 
         display.innerHTML = `
     <div class="verb-prompt">
