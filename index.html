@@ -287,7 +287,8 @@
         margin-top: 5px;
       }
 
-      .speaker-icon, .dict-icon {
+      .speaker-icon,
+      .dict-icon {
         cursor: pointer;
         margin: 0 8px;
         font-size: 1.2em;
@@ -298,7 +299,8 @@
         padding: 4px 6px;
       }
 
-      .speaker-icon:hover, .dict-icon:hover {
+      .speaker-icon:hover,
+      .dict-icon:hover {
         transform: scale(1.2);
         opacity: 1;
         background: rgba(255, 255, 255, 0.3);
@@ -401,7 +403,9 @@
 
             <div class="controls">
               <button class="btn" onclick="getNewVerb()">New Verb</button>
-              <button class="btn btn-secondary" onclick="resetStats()">Reset Stats</button>
+              <button class="btn btn-secondary" onclick="resetStats()">
+                Reset Stats
+              </button>
             </div>
           </div>
         </div>
@@ -425,33 +429,43 @@
             </div>
           </div>
 
-          <div style="margin-top: 30px;">
-            <h4 style="text-align: center; margin-bottom: 15px;">Practice Options</h4>
-            
-            <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
-              <label style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" id="showRegularityHint" checked>
+          <div style="margin-top: 30px">
+            <h4 style="text-align: center; margin-bottom: 15px">
+              Practice Options
+            </h4>
+
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+              "
+            >
+              <label style="display: flex; align-items: center; gap: 8px">
+                <input type="checkbox" id="showRegularityHint" checked />
                 Show regularity hints
               </label>
-              <label style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" id="allowMultipleAttempts" checked>
+              <label style="display: flex; align-items: center; gap: 8px">
+                <input type="checkbox" id="allowMultipleAttempts" checked />
                 Allow multiple attempts
               </label>
             </div>
           </div>
 
-          <div style="margin-top: 30px; text-align: center;">
-            <h4 style="margin-bottom: 15px;">Available Verbs</h4>
-            <p style="color: #6c757d; font-size: 0.9em;">
-              Currently practicing with <span id="verbCountDisplay">20</span> verbs
+          <div style="margin-top: 30px; text-align: center">
+            <h4 style="margin-bottom: 15px">Available Verbs</h4>
+            <p style="color: #6c757d; font-size: 0.9em">
+              Currently practicing with
+              <span id="verbCountDisplay">20</span> verbs
             </p>
           </div>
         </div>
 
         <div class="tab-content" id="progress">
-          <div style="text-align: center;">
-            <h3 style="margin-bottom: 20px;">Practice Progress</h3>
-            
+          <div style="text-align: center">
+            <h3 style="margin-bottom: 20px">Practice Progress</h3>
+
             <div class="stats-section">
               <div class="stat-item">
                 <div class="stat-number" id="sessionLength">0</div>
@@ -467,10 +481,17 @@
               </div>
             </div>
 
-            <div style="margin-top: 30px;">
-              <h4 style="margin-bottom: 15px;">Recent Mistakes</h4>
-              <div id="recentMistakes" style="text-align: left; max-height: 200px; overflow-y: auto;">
-                <p style="color: #6c757d; font-style: italic; text-align: center;">No mistakes yet - great job!</p>
+            <div style="margin-top: 30px">
+              <h4 style="margin-bottom: 15px">Recent Mistakes</h4>
+              <div
+                id="recentMistakes"
+                style="text-align: left; max-height: 200px; overflow-y: auto"
+              >
+                <p
+                  style="color: #6c757d; font-style: italic; text-align: center"
+                >
+                  No mistakes yet - great job!
+                </p>
               </div>
             </div>
           </div>
@@ -482,36 +503,57 @@
 
             <h4>How to Use:</h4>
             <p>
-              <strong>Practice Tab:</strong> Click "New Verb" to get a random verb and conjugation challenge. Type your answer and press Enter to submit. If wrong, you can try again or reveal the correct answer.
+              <strong>Practice Tab:</strong> Click "New Verb" to get a random
+              verb and conjugation challenge. Type your answer and press Enter
+              to submit. If wrong, you can try again or reveal the correct
+              answer.
             </p>
 
             <p>
-              <strong>Settings Tab:</strong> Choose your verb difficulty level and conjugation complexity. Beginner verbs include the most common ones, while Advanced includes more irregular and complex verbs.
+              <strong>Settings Tab:</strong> Choose your verb difficulty level
+              and conjugation complexity. Beginner verbs include the most common
+              ones, while Advanced includes more irregular and complex verbs.
             </p>
 
             <h4>Features:</h4>
             <ul>
-              <li>🔊 Click the speaker icon to hear pronunciation of the verb</li>
+              <li>
+                🔊 Click the speaker icon to hear pronunciation of the verb
+              </li>
               <li>📖 Click the book icon to view full conjugation tables</li>
-              <li>💡 Regularity hints show if a verb follows regular patterns</li>
+              <li>
+                💡 Regularity hints show if a verb follows regular patterns
+              </li>
               <li>📊 Track your accuracy and progress over time</li>
               <li>🎯 Focus on specific tenses and difficulty levels</li>
             </ul>
 
             <h4>Conjugation Types:</h4>
             <p>
-              <strong>Basic:</strong> Present tense, Past tense (Passato Prossimo), Future tense, and Imperative mood.
+              <strong>Basic:</strong> Present tense, Past tense (Passato
+              Prossimo), Future tense, and Imperative mood.
             </p>
             <p>
-              <strong>Advanced:</strong> Includes Subjunctive, Conditional, Imperfect, and other complex tenses.
+              <strong>Advanced:</strong> Includes Subjunctive, Conditional,
+              Imperfect, and other complex tenses.
             </p>
 
             <h4>Tips:</h4>
             <ul>
-              <li>Start with Basic conjugations and Beginner verbs to build confidence</li>
-              <li>Pay attention to the grammatical terminology - it helps reinforce learning</li>
-              <li>Use the pronunciation feature to improve your spoken Italian</li>
-              <li>Regular practice is more effective than long study sessions</li>
+              <li>
+                Start with Basic conjugations and Beginner verbs to build
+                confidence
+              </li>
+              <li>
+                Pay attention to the grammatical terminology - it helps
+                reinforce learning
+              </li>
+              <li>
+                Use the pronunciation feature to improve your spoken Italian
+              </li>
+              <li>
+                Regular practice is more effective than long study sessions
+              </li>
             </ul>
 
             <p style="margin-top: 20px; font-style: italic; color: #6c757d">
@@ -525,228 +567,426 @@
     <script>
       // Verb conjugation database - 20 most common Italian verbs
       const verbDatabase = {
-        "essere": {
+        essere: {
           translation: "to be",
           regular: false,
           difficulty: "beginner",
           conjugations: {
             presente: {
-              io: "sono", tu: "sei", lui: "è", noi: "siamo", voi: "siete", loro: "sono"
+              io: "sono",
+              tu: "sei",
+              lui: "è",
+              noi: "siamo",
+              voi: "siete",
+              loro: "sono",
             },
             passato_prossimo: {
-              io: "sono stato/a", tu: "sei stato/a", lui: "è stato/a", 
-              noi: "siamo stati/e", voi: "siete stati/e", loro: "sono stati/e"
+              io: "sono stato/a",
+              tu: "sei stato/a",
+              lui: "è stato/a",
+              noi: "siamo stati/e",
+              voi: "siete stati/e",
+              loro: "sono stati/e",
             },
             futuro: {
-              io: "dovrò", tu: "dovrai", lui: "dovrà", noi: "dovremo", voi: "dovrete", loro: "dovranno"
+              io: "dovrò",
+              tu: "dovrai",
+              lui: "dovrà",
+              noi: "dovremo",
+              voi: "dovrete",
+              loro: "dovranno",
             },
             condizionale: {
-              io: "dovrei", tu: "dovresti", lui: "dovrebbe", noi: "dovremmo", voi: "dovreste", loro: "dovrebbero"
-            }
-          }
+              io: "dovrei",
+              tu: "dovresti",
+              lui: "dovrebbe",
+              noi: "dovremmo",
+              voi: "dovreste",
+              loro: "dovrebbero",
+            },
+          },
         },
-        "venire": {
+        venire: {
           translation: "to come",
           regular: false,
           difficulty: "intermediate",
           conjugations: {
             presente: {
-              io: "vengo", tu: "vieni", lui: "viene", noi: "veniamo", voi: "venite", loro: "vengono"
+              io: "vengo",
+              tu: "vieni",
+              lui: "viene",
+              noi: "veniamo",
+              voi: "venite",
+              loro: "vengono",
             },
             passato_prossimo: {
-              io: "sono venuto/a", tu: "sei venuto/a", lui: "è venuto/a", 
-              noi: "siamo venuti/e", voi: "siete venuti/e", loro: "sono venuti/e"
+              io: "sono venuto/a",
+              tu: "sei venuto/a",
+              lui: "è venuto/a",
+              noi: "siamo venuti/e",
+              voi: "siete venuti/e",
+              loro: "sono venuti/e",
             },
             futuro: {
-              io: "verrò", tu: "verrai", lui: "verrà", noi: "verremo", voi: "verrete", loro: "verranno"
+              io: "verrò",
+              tu: "verrai",
+              lui: "verrà",
+              noi: "verremo",
+              voi: "verrete",
+              loro: "verranno",
             },
             imperativo: {
-              tu: "vieni", lui: "venga", noi: "veniamo", voi: "venite", loro: "vengano"
-            }
-          }
+              tu: "vieni",
+              lui: "venga",
+              noi: "veniamo",
+              voi: "venite",
+              loro: "vengano",
+            },
+          },
         },
-        "uscire": {
+        uscire: {
           translation: "to go out",
           regular: false,
           difficulty: "intermediate",
           conjugations: {
             presente: {
-              io: "esco", tu: "esci", lui: "esce", noi: "usciamo", voi: "uscite", loro: "escono"
+              io: "esco",
+              tu: "esci",
+              lui: "esce",
+              noi: "usciamo",
+              voi: "uscite",
+              loro: "escono",
             },
             passato_prossimo: {
-              io: "sono uscito/a", tu: "sei uscito/a", lui: "è uscito/a", 
-              noi: "siamo usciti/e", voi: "siete usciti/e", loro: "sono usciti/e"
+              io: "sono uscito/a",
+              tu: "sei uscito/a",
+              lui: "è uscito/a",
+              noi: "siamo usciti/e",
+              voi: "siete usciti/e",
+              loro: "sono usciti/e",
             },
             futuro: {
-              io: "uscirò", tu: "uscirai", lui: "uscirà", noi: "usciremo", voi: "uscirete", loro: "usciranno"
+              io: "uscirò",
+              tu: "uscirai",
+              lui: "uscirà",
+              noi: "usciremo",
+              voi: "uscirete",
+              loro: "usciranno",
             },
             imperativo: {
-              tu: "esci", lui: "esca", noi: "usciamo", voi: "uscite", loro: "escano"
-            }
-          }
+              tu: "esci",
+              lui: "esca",
+              noi: "usciamo",
+              voi: "uscite",
+              loro: "escano",
+            },
+          },
         },
-        "parlare": {
+        parlare: {
           translation: "to speak",
           regular: true,
           difficulty: "beginner",
           conjugations: {
             presente: {
-              io: "parlo", tu: "parli", lui: "parla", noi: "parliamo", voi: "parlate", loro: "parlano"
+              io: "parlo",
+              tu: "parli",
+              lui: "parla",
+              noi: "parliamo",
+              voi: "parlate",
+              loro: "parlano",
             },
             passato_prossimo: {
-              io: "ho parlato", tu: "hai parlato", lui: "ha parlato", 
-              noi: "abbiamo parlato", voi: "avete parlato", loro: "hanno parlato"
+              io: "ho parlato",
+              tu: "hai parlato",
+              lui: "ha parlato",
+              noi: "abbiamo parlato",
+              voi: "avete parlato",
+              loro: "hanno parlato",
             },
             futuro: {
-              io: "parlerò", tu: "parlerai", lui: "parlerà", noi: "parleremo", voi: "parlerete", loro: "parleranno"
+              io: "parlerò",
+              tu: "parlerai",
+              lui: "parlerà",
+              noi: "parleremo",
+              voi: "parlerete",
+              loro: "parleranno",
             },
             imperativo: {
-              tu: "parla", lui: "parli", noi: "parliamo", voi: "parlate", loro: "parlino"
+              tu: "parla",
+              lui: "parli",
+              noi: "parliamo",
+              voi: "parlate",
+              loro: "parlino",
             },
             congiuntivo_presente: {
-              io: "parli", tu: "parli", lui: "parli", noi: "parliamo", voi: "parliate", loro: "parlino"
+              io: "parli",
+              tu: "parli",
+              lui: "parli",
+              noi: "parliamo",
+              voi: "parliate",
+              loro: "parlino",
             },
             condizionale: {
-              io: "parlerei", tu: "parleresti", lui: "parlerebbe", noi: "parleremmo", voi: "parlereste", loro: "parlerebbero"
-            }
-          }
+              io: "parlerei",
+              tu: "parleresti",
+              lui: "parlerebbe",
+              noi: "parleremmo",
+              voi: "parlereste",
+              loro: "parlerebbero",
+            },
+          },
         },
-        "mangiare": {
+        mangiare: {
           translation: "to eat",
           regular: true,
           difficulty: "beginner",
           conjugations: {
             presente: {
-              io: "mangio", tu: "mangi", lui: "mangia", noi: "mangiamo", voi: "mangiate", loro: "mangiano"
+              io: "mangio",
+              tu: "mangi",
+              lui: "mangia",
+              noi: "mangiamo",
+              voi: "mangiate",
+              loro: "mangiano",
             },
             passato_prossimo: {
-              io: "ho mangiato", tu: "hai mangiato", lui: "ha mangiato", 
-              noi: "abbiamo mangiato", voi: "avete mangiato", loro: "hanno mangiato"
+              io: "ho mangiato",
+              tu: "hai mangiato",
+              lui: "ha mangiato",
+              noi: "abbiamo mangiato",
+              voi: "avete mangiato",
+              loro: "hanno mangiato",
             },
             futuro: {
-              io: "mangerò", tu: "mangerai", lui: "mangerà", noi: "mangeremo", voi: "mangerete", loro: "mangeranno"
+              io: "mangerò",
+              tu: "mangerai",
+              lui: "mangerà",
+              noi: "mangeremo",
+              voi: "mangerete",
+              loro: "mangeranno",
             },
             imperativo: {
-              tu: "mangia", lui: "mangi", noi: "mangiamo", voi: "mangiate", loro: "mangino"
-            }
-          }
+              tu: "mangia",
+              lui: "mangi",
+              noi: "mangiamo",
+              voi: "mangiate",
+              loro: "mangino",
+            },
+          },
         },
-        "dormire": {
+        dormire: {
           translation: "to sleep",
           regular: true,
           difficulty: "beginner",
           conjugations: {
             presente: {
-              io: "dormo", tu: "dormi", lui: "dorme", noi: "dormiamo", voi: "dormite", loro: "dormono"
+              io: "dormo",
+              tu: "dormi",
+              lui: "dorme",
+              noi: "dormiamo",
+              voi: "dormite",
+              loro: "dormono",
             },
             passato_prossimo: {
-              io: "ho dormito", tu: "hai dormito", lui: "ha dormito", 
-              noi: "abbiamo dormito", voi: "avete dormito", loro: "hanno dormito"
+              io: "ho dormito",
+              tu: "hai dormito",
+              lui: "ha dormito",
+              noi: "abbiamo dormito",
+              voi: "avete dormito",
+              loro: "hanno dormito",
             },
             futuro: {
-              io: "dormirò", tu: "dormirai", lui: "dormirà", noi: "dormiremo", voi: "dormirete", loro: "dormiranno"
+              io: "dormirò",
+              tu: "dormirai",
+              lui: "dormirà",
+              noi: "dormiremo",
+              voi: "dormirete",
+              loro: "dormiranno",
             },
             imperativo: {
-              tu: "dormi", lui: "dorma", noi: "dormiamo", voi: "dormite", loro: "dormano"
-            }
-          }
+              tu: "dormi",
+              lui: "dorma",
+              noi: "dormiamo",
+              voi: "dormite",
+              loro: "dormano",
+            },
+          },
         },
-        "lavorare": {
+        lavorare: {
           translation: "to work",
           regular: true,
           difficulty: "beginner",
           conjugations: {
             presente: {
-              io: "lavoro", tu: "lavori", lui: "lavora", noi: "lavoriamo", voi: "lavorate", loro: "lavorano"
+              io: "lavoro",
+              tu: "lavori",
+              lui: "lavora",
+              noi: "lavoriamo",
+              voi: "lavorate",
+              loro: "lavorano",
             },
             passato_prossimo: {
-              io: "ho lavorato", tu: "hai lavorato", lui: "ha lavorato", 
-              noi: "abbiamo lavorato", voi: "avete lavorato", loro: "hanno lavorato"
+              io: "ho lavorato",
+              tu: "hai lavorato",
+              lui: "ha lavorato",
+              noi: "abbiamo lavorato",
+              voi: "avete lavorato",
+              loro: "hanno lavorato",
             },
             futuro: {
-              io: "lavorerò", tu: "lavorerai", lui: "lavorerà", noi: "lavoreremo", voi: "lavorerete", loro: "lavoreranno"
+              io: "lavorerò",
+              tu: "lavorerai",
+              lui: "lavorerà",
+              noi: "lavoreremo",
+              voi: "lavorerete",
+              loro: "lavoreranno",
             },
             imperativo: {
-              tu: "lavora", lui: "lavori", noi: "lavoriamo", voi: "lavorate", loro: "lavorino"
-            }
-          }
+              tu: "lavora",
+              lui: "lavori",
+              noi: "lavoriamo",
+              voi: "lavorate",
+              loro: "lavorino",
+            },
+          },
         },
-        "studiare": {
+        studiare: {
           translation: "to study",
           regular: true,
           difficulty: "beginner",
           conjugations: {
             presente: {
-              io: "studio", tu: "studi", lui: "studia", noi: "studiamo", voi: "studiate", loro: "studiano"
+              io: "studio",
+              tu: "studi",
+              lui: "studia",
+              noi: "studiamo",
+              voi: "studiate",
+              loro: "studiano",
             },
             passato_prossimo: {
-              io: "ho studiato", tu: "hai studiato", lui: "ha studiato", 
-              noi: "abbiamo studiato", voi: "avete studiato", loro: "hanno studiato"
+              io: "ho studiato",
+              tu: "hai studiato",
+              lui: "ha studiato",
+              noi: "abbiamo studiato",
+              voi: "avete studiato",
+              loro: "hanno studiato",
             },
             futuro: {
-              io: "studierò", tu: "studierai", lui: "studierà", noi: "studieremo", voi: "studierete", loro: "studieranno"
+              io: "studierò",
+              tu: "studierai",
+              lui: "studierà",
+              noi: "studieremo",
+              voi: "studierete",
+              loro: "studieranno",
             },
             imperativo: {
-              tu: "studia", lui: "studi", noi: "studiamo", voi: "studiate", loro: "studino"
-            }
-          }
+              tu: "studia",
+              lui: "studi",
+              noi: "studiamo",
+              voi: "studiate",
+              loro: "studino",
+            },
+          },
         },
-        "abitare": {
+        abitare: {
           translation: "to live",
           regular: true,
           difficulty: "beginner",
           conjugations: {
             presente: {
-              io: "abito", tu: "abiti", lui: "abita", noi: "abitiamo", voi: "abitate", loro: "abitano"
+              io: "abito",
+              tu: "abiti",
+              lui: "abita",
+              noi: "abitiamo",
+              voi: "abitate",
+              loro: "abitano",
             },
             passato_prossimo: {
-              io: "ho abitato", tu: "hai abitato", lui: "ha abitato", 
-              noi: "abbiamo abitato", voi: "avete abitato", loro: "hanno abitato"
+              io: "ho abitato",
+              tu: "hai abitato",
+              lui: "ha abitato",
+              noi: "abbiamo abitato",
+              voi: "avete abitato",
+              loro: "hanno abitato",
             },
             futuro: {
-              io: "abiterò", tu: "abiterai", lui: "abiterà", noi: "abiteremo", voi: "abiterete", loro: "abiteranno"
+              io: "abiterò",
+              tu: "abiterai",
+              lui: "abiterà",
+              noi: "abiteremo",
+              voi: "abiterete",
+              loro: "abiteranno",
             },
             imperativo: {
-              tu: "abita", lui: "abiti", noi: "abitiamo", voi: "abitate", loro: "abitino"
-            }
-          }
+              tu: "abita",
+              lui: "abiti",
+              noi: "abitiamo",
+              voi: "abitate",
+              loro: "abitino",
+            },
+          },
         },
-        "sentire": {
+        sentire: {
           translation: "to feel/hear",
           regular: true,
           difficulty: "intermediate",
           conjugations: {
             presente: {
-              io: "sento", tu: "senti", lui: "sente", noi: "sentiamo", voi: "sentite", loro: "sentono"
+              io: "sento",
+              tu: "senti",
+              lui: "sente",
+              noi: "sentiamo",
+              voi: "sentite",
+              loro: "sentono",
             },
             passato_prossimo: {
-              io: "ho sentito", tu: "hai sentito", lui: "ha sentito", 
-              noi: "abbiamo sentito", voi: "avete sentito", loro: "hanno sentito"
+              io: "ho sentito",
+              tu: "hai sentito",
+              lui: "ha sentito",
+              noi: "abbiamo sentito",
+              voi: "avete sentito",
+              loro: "hanno sentito",
             },
             futuro: {
-              io: "sentirò", tu: "sentirai", lui: "sentirà", noi: "sentiremo", voi: "sentirete", loro: "sentiranno"
+              io: "sentirò",
+              tu: "sentirai",
+              lui: "sentirà",
+              noi: "sentiremo",
+              voi: "sentirete",
+              loro: "sentiranno",
             },
             imperativo: {
-              tu: "senti", lui: "senta", noi: "sentiamo", voi: "sentite", loro: "sentano"
-            }
-          }
-        }
+              tu: "senti",
+              lui: "senta",
+              noi: "sentiamo",
+              voi: "sentite",
+              loro: "sentano",
+            },
+          },
+        },
       };
 
       // Conjugation type definitions
       const conjugationTypes = {
-        basic: ['presente', 'passato_prossimo', 'futuro', 'imperativo'],
-        advanced: ['presente', 'passato_prossimo', 'futuro', 'imperativo', 'congiuntivo_presente', 'condizionale']
+        basic: ["presente", "passato_prossimo", "futuro", "imperativo"],
+        advanced: [
+          "presente",
+          "passato_prossimo",
+          "futuro",
+          "imperativo",
+          "congiuntivo_presente",
+          "condizionale",
+        ],
       };
 
       // Person definitions in Italian
       const persons = {
         io: "prima persona singolare",
-        tu: "seconda persona singolare", 
+        tu: "seconda persona singolare",
         lui: "terza persona singolare",
         noi: "prima persona plurale",
         voi: "seconda persona plurale",
-        loro: "terza persona plurale"
+        loro: "terza persona plurale",
       };
 
       // Tense names in Italian
@@ -756,7 +996,7 @@
         futuro: "futuro",
         imperativo: "imperativo",
         congiuntivo_presente: "congiuntivo presente",
-        condizionale: "condizionale"
+        condizionale: "condizionale",
       };
 
       // Current practice state
@@ -773,15 +1013,15 @@
         total: 0,
         currentStreak: 0,
         bestStreak: 0,
-        recentMistakes: []
+        recentMistakes: [],
       };
 
       // Settings
       let settings = {
-        verbLevel: 'advanced',
-        conjugationLevel: 'basic',
+        verbLevel: "advanced",
+        conjugationLevel: "basic",
         showRegularityHint: true,
-        allowMultipleAttempts: true
+        allowMultipleAttempts: true,
       };
 
       // Function to pronounce Italian words using ResponsiveVoice
@@ -794,13 +1034,17 @@
           });
         } else {
           console.log("ResponsiveVoice not loaded yet");
-          alert("Pronunciation feature is still loading. Please try again in a moment.");
+          alert(
+            "Pronunciation feature is still loading. Please try again in a moment."
+          );
         }
       }
 
       // Open Italian conjugation in new tab
       function openConjugation(verb) {
-        const conjugationUrl = `https://conjugator.reverso.net/conjugation-italian-verb-${encodeURIComponent(verb)}.html`;
+        const conjugationUrl = `https://conjugator.reverso.net/conjugation-italian-verb-${encodeURIComponent(
+          verb
+        )}.html`;
         window.open(conjugationUrl, "_blank");
       }
 
@@ -817,16 +1061,16 @@
       // Get available verbs based on current difficulty setting
       function getAvailableVerbs() {
         const targetDifficulties = [];
-        
-        if (settings.verbLevel === 'beginner') {
-          targetDifficulties.push('beginner');
-        } else if (settings.verbLevel === 'intermediate') {
-          targetDifficulties.push('beginner', 'intermediate');
+
+        if (settings.verbLevel === "beginner") {
+          targetDifficulties.push("beginner");
+        } else if (settings.verbLevel === "intermediate") {
+          targetDifficulties.push("beginner", "intermediate");
         } else {
-          targetDifficulties.push('beginner', 'intermediate', 'advanced');
+          targetDifficulties.push("beginner", "intermediate", "advanced");
         }
 
-        return Object.keys(verbDatabase).filter(verb => 
+        return Object.keys(verbDatabase).filter((verb) =>
           targetDifficulties.includes(verbDatabase[verb].difficulty)
         );
       }
@@ -835,63 +1079,72 @@
       function getAvailableTenses(verb) {
         const verbData = verbDatabase[verb];
         const availableForLevel = conjugationTypes[settings.conjugationLevel];
-        
-        return availableForLevel.filter(tense => 
-          verbData.conjugations[tense] !== undefined
+
+        return availableForLevel.filter(
+          (tense) => verbData.conjugations[tense] !== undefined
         );
       }
 
       // Get new random verb conjugation challenge
       function getNewVerb() {
         const availableVerbs = getAvailableVerbs();
-        
+
         if (availableVerbs.length === 0) {
-          showFeedback('No verbs available for current settings', 'error');
+          showFeedback("No verbs available for current settings", "error");
           return;
         }
 
         // Select random verb
-        currentVerb = availableVerbs[Math.floor(Math.random() * availableVerbs.length)];
-        
+        currentVerb =
+          availableVerbs[Math.floor(Math.random() * availableVerbs.length)];
+
         // Get available tenses for this verb
         const availableTenses = getAvailableTenses(currentVerb);
-        
+
         if (availableTenses.length === 0) {
-          showFeedback('No tenses available for this verb', 'error');
+          showFeedback("No tenses available for this verb", "error");
           return;
         }
 
         // Select random tense
-        currentTense = availableTenses[Math.floor(Math.random() * availableTenses.length)];
-        
+        currentTense =
+          availableTenses[Math.floor(Math.random() * availableTenses.length)];
+
         // Select random person
-        const availablePersons = Object.keys(verbDatabase[currentVerb].conjugations[currentTense]);
-        currentPerson = availablePersons[Math.floor(Math.random() * availablePersons.length)];
-        
+        const availablePersons = Object.keys(
+          verbDatabase[currentVerb].conjugations[currentTense]
+        );
+        currentPerson =
+          availablePersons[Math.floor(Math.random() * availablePersons.length)];
+
         // Get correct answer
-        currentAnswer = verbDatabase[currentVerb].conjugations[currentTense][currentPerson];
-        
+        currentAnswer =
+          verbDatabase[currentVerb].conjugations[currentTense][currentPerson];
+
         // Reset attempts
         attempts = 0;
-        
+
         // Display the challenge
         displayChallenge();
-        
+
         // Clear previous feedback
         hideFeedback();
-        
-        console.log(`New challenge: ${currentVerb} - ${currentTense} - ${currentPerson} = ${currentAnswer}`);
+
+        console.log(
+          `New challenge: ${currentVerb} - ${currentTense} - ${currentPerson} = ${currentAnswer}`
+        );
       }
 
       // Display the current challenge
       function displayChallenge() {
-        const display = document.getElementById('conjugationDisplay');
+        const display = document.getElementById("conjugationDisplay");
         const verbData = verbDatabase[currentVerb];
-        
-        const regularityHint = settings.showRegularityHint ? 
-          `<div style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px;">
-            ${verbData.regular ? '✓ Regular verb' : '⚠️ Irregular verb'}
-          </div>` : '';
+
+        const regularityHint = settings.showRegularityHint
+          ? `<div style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px;">
+            ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
+          </div>`
+          : "";
 
         display.innerHTML = `
           <div class="verb-prompt">
@@ -915,33 +1168,33 @@
             <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
           </div>
         `;
-        
+
         // Focus on input
-        document.getElementById('answerInput').focus();
+        document.getElementById("answerInput").focus();
       }
 
       // Handle Enter key press
       function handleKeyPress(event) {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
           checkAnswer();
         }
       }
 
       // Check the user's answer
       function checkAnswer() {
-        const userAnswer = document.getElementById('answerInput').value.trim();
-        
+        const userAnswer = document.getElementById("answerInput").value.trim();
+
         if (!userAnswer) {
-          showFeedback('Please enter an answer', 'error');
+          showFeedback("Please enter an answer", "error");
           return;
         }
 
         attempts++;
-        
+
         // Normalize both answers for comparison
         const normalizedUser = normalizeText(userAnswer);
         const normalizedCorrect = normalizeText(currentAnswer);
-        
+
         if (normalizedUser === normalizedCorrect) {
           // Correct answer
           handleCorrectAnswer();
@@ -953,23 +1206,23 @@
 
       // Handle correct answer
       function handleCorrectAnswer() {
-        const input = document.getElementById('answerInput');
-        input.className = 'answer-input correct';
+        const input = document.getElementById("answerInput");
+        input.className = "answer-input correct";
         input.disabled = true;
-        
+
         // Update stats
         stats.correct++;
         stats.total++;
         stats.currentStreak++;
-        
+
         if (stats.currentStreak > stats.bestStreak) {
           stats.bestStreak = stats.currentStreak;
         }
-        
+
         updateStatsDisplay();
-        
-        showFeedback(`Correct! 🎉`, 'success');
-        
+
+        showFeedback(`Correct! 🎉`, "success");
+
         // Auto-advance after 2 seconds
         setTimeout(() => {
           getNewVerb();
@@ -978,12 +1231,12 @@
 
       // Handle wrong answer
       function handleWrongAnswer(userAnswer) {
-        const input = document.getElementById('answerInput');
-        input.className = 'answer-input incorrect';
-        
+        const input = document.getElementById("answerInput");
+        input.className = "answer-input incorrect";
+
         stats.total++;
         stats.currentStreak = 0;
-        
+
         // Add to recent mistakes
         stats.recentMistakes.unshift({
           verb: currentVerb,
@@ -991,30 +1244,36 @@
           person: currentPerson,
           userAnswer: userAnswer,
           correctAnswer: currentAnswer,
-          timestamp: new Date()
+          timestamp: new Date(),
         });
-        
+
         // Keep only last 10 mistakes
         if (stats.recentMistakes.length > 10) {
           stats.recentMistakes = stats.recentMistakes.slice(0, 10);
         }
-        
+
         updateStatsDisplay();
         updateRecentMistakes();
-        
+
         if (settings.allowMultipleAttempts && attempts < maxAttempts) {
-          showFeedback(`Not quite right. Try again! (Attempt ${attempts}/${maxAttempts})`, 'error');
-          
+          showFeedback(
+            `Not quite right. Try again! (Attempt ${attempts}/${maxAttempts})`,
+            "error"
+          );
+
           // Reset input style after a moment and let them try again
           setTimeout(() => {
-            input.className = 'answer-input';
-            input.value = '';
+            input.className = "answer-input";
+            input.value = "";
             input.focus();
           }, 1500);
         } else {
-          showFeedback(`Incorrect. The answer is: <strong>${currentAnswer}</strong>`, 'error');
+          showFeedback(
+            `Incorrect. The answer is: <strong>${currentAnswer}</strong>`,
+            "error"
+          );
           input.disabled = true;
-          
+
           // Auto-advance after 3 seconds
           setTimeout(() => {
             getNewVerb();
@@ -1024,18 +1283,21 @@
 
       // Show correct answer
       function showCorrectAnswer() {
-        const input = document.getElementById('answerInput');
+        const input = document.getElementById("answerInput");
         input.value = currentAnswer;
-        input.className = 'answer-input';
+        input.className = "answer-input";
         input.disabled = true;
-        
-        showFeedback(`The correct answer is: <strong>${currentAnswer}</strong>`, 'info');
-        
+
+        showFeedback(
+          `The correct answer is: <strong>${currentAnswer}</strong>`,
+          "info"
+        );
+
         // This counts as getting it wrong for stats
         stats.total++;
         stats.currentStreak = 0;
         updateStatsDisplay();
-        
+
         // Auto-advance after 3 seconds
         setTimeout(() => {
           getNewVerb();
@@ -1044,57 +1306,72 @@
 
       // Show feedback message
       function showFeedback(message, type) {
-        const feedback = document.querySelector('.feedback-section');
+        const feedback = document.querySelector(".feedback-section");
         if (!feedback) {
           // Create feedback section if it doesn't exist
-          const feedbackDiv = document.createElement('div');
-          feedbackDiv.className = 'feedback-section';
-          document.getElementById('conjugationDisplay').appendChild(feedbackDiv);
+          const feedbackDiv = document.createElement("div");
+          feedbackDiv.className = "feedback-section";
+          document
+            .getElementById("conjugationDisplay")
+            .appendChild(feedbackDiv);
         }
-        
-        const feedbackElement = document.querySelector('.feedback-section');
+
+        const feedbackElement = document.querySelector(".feedback-section");
         feedbackElement.innerHTML = message;
         feedbackElement.className = `feedback-section ${type}`;
       }
 
       // Hide feedback
       function hideFeedback() {
-        const feedback = document.querySelector('.feedback-section');
+        const feedback = document.querySelector(".feedback-section");
         if (feedback) {
-          feedback.className = 'feedback-section';
+          feedback.className = "feedback-section";
         }
       }
 
       // Update statistics display
       function updateStatsDisplay() {
-        document.getElementById('correctCount').textContent = stats.correct;
-        document.getElementById('totalCount').textContent = stats.total;
-        
-        const accuracy = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
-        document.getElementById('accuracyPercent').textContent = accuracy + '%';
-        
-        document.getElementById('sessionLength').textContent = stats.total;
-        document.getElementById('currentStreak').textContent = stats.currentStreak;
-        document.getElementById('bestStreak').textContent = stats.bestStreak;
+        document.getElementById("correctCount").textContent = stats.correct;
+        document.getElementById("totalCount").textContent = stats.total;
+
+        const accuracy =
+          stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+        document.getElementById("accuracyPercent").textContent = accuracy + "%";
+
+        document.getElementById("sessionLength").textContent = stats.total;
+        document.getElementById("currentStreak").textContent =
+          stats.currentStreak;
+        document.getElementById("bestStreak").textContent = stats.bestStreak;
       }
 
       // Update recent mistakes display
       function updateRecentMistakes() {
-        const container = document.getElementById('recentMistakes');
-        
+        const container = document.getElementById("recentMistakes");
+
         if (stats.recentMistakes.length === 0) {
-          container.innerHTML = '<p style="color: #6c757d; font-style: italic; text-align: center;">No mistakes yet - great job!</p>';
+          container.innerHTML =
+            '<p style="color: #6c757d; font-style: italic; text-align: center;">No mistakes yet - great job!</p>';
           return;
         }
-        
-        const mistakesHtml = stats.recentMistakes.map(mistake => `
+
+        const mistakesHtml = stats.recentMistakes
+          .map(
+            (mistake) => `
           <div style="background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 3px solid #dc3545;">
-            <strong>${mistake.verb}</strong> (${tenseNames[mistake.tense]} - ${persons[mistake.person]})<br>
-            <span style="color: #dc3545;">Your answer: ${mistake.userAnswer}</span><br>
-            <span style="color: #28a745;">Correct: ${mistake.correctAnswer}</span>
+            <strong>${mistake.verb}</strong> (${tenseNames[mistake.tense]} - ${
+              persons[mistake.person]
+            })<br>
+            <span style="color: #dc3545;">Your answer: ${
+              mistake.userAnswer
+            }</span><br>
+            <span style="color: #28a745;">Correct: ${
+              mistake.correctAnswer
+            }</span>
           </div>
-        `).join('');
-        
+        `
+          )
+          .join("");
+
         container.innerHTML = mistakesHtml;
       }
 
@@ -1105,39 +1382,48 @@
           total: 0,
           currentStreak: 0,
           bestStreak: 0,
-          recentMistakes: []
+          recentMistakes: [],
         };
-        
+
         updateStatsDisplay();
         updateRecentMistakes();
-        
-        showFeedback('Statistics reset!', 'info');
+
+        showFeedback("Statistics reset!", "info");
         setTimeout(hideFeedback, 2000);
       }
 
       // Update settings
       function updateSettings() {
-        settings.verbLevel = document.getElementById('verbLevel').value;
-        settings.conjugationLevel = document.getElementById('conjugationLevel').value;
-        settings.showRegularityHint = document.getElementById('showRegularityHint').checked;
-        settings.allowMultipleAttempts = document.getElementById('allowMultipleAttempts').checked;
-        
+        settings.verbLevel = document.getElementById("verbLevel").value;
+        settings.conjugationLevel =
+          document.getElementById("conjugationLevel").value;
+        settings.showRegularityHint =
+          document.getElementById("showRegularityHint").checked;
+        settings.allowMultipleAttempts = document.getElementById(
+          "allowMultipleAttempts"
+        ).checked;
+
         // Update verb count display
         const availableVerbs = getAvailableVerbs();
-        document.getElementById('verbCountDisplay').textContent = availableVerbs.length;
-        
-        console.log('Settings updated:', settings);
+        document.getElementById("verbCountDisplay").textContent =
+          availableVerbs.length;
+
+        console.log("Settings updated:", settings);
       }
 
       // Tab switching functionality
       function setupTabSwitching() {
-        document.querySelectorAll('.tab').forEach(tab => {
-          tab.addEventListener('click', () => {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
+        document.querySelectorAll(".tab").forEach((tab) => {
+          tab.addEventListener("click", () => {
+            document
+              .querySelectorAll(".tab")
+              .forEach((t) => t.classList.remove("active"));
+            document
+              .querySelectorAll(".tab-content")
+              .forEach((content) => content.classList.remove("active"));
+
+            tab.classList.add("active");
+            document.getElementById(tab.dataset.tab).classList.add("active");
           });
         });
       }
@@ -1148,872 +1434,26 @@
         updateSettings();
         updateStatsDisplay();
         updateRecentMistakes();
-        
-        console.log('Italian Conjugation Practice app initialized');
-        console.log('Available verbs:', Object.keys(verbDatabase).length);
+
+        console.log("Italian Conjugation Practice app initialized");
+        console.log("Available verbs:", Object.keys(verbDatabase).length);
       }
 
       // Wait for DOM to be ready before initializing
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeApp);
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initializeApp);
       } else {
         initializeApp();
       }
 
       // Register service worker for PWA functionality
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('data:text/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZXZlbnQgPT4gewogIGV2ZW50LndhaXRVbnRpbChzZWxmLnNraXBXYWl0aW5nKCkpOwp9KTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBldmVudCA9PiB7CiAgZXZlbnQud2FpdFVudGlsKHNlbGYuY2xpZW50cy5jbGFpbSgpKTsKfSk7CgpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZXZlbnQgPT4gewogIGV2ZW50LnJlc3BvbmRXaXRoKGZldGNoKGV2ZW50LnJlcXVlc3QpKTsKfSk7')
-        .then(() => console.log('Service Worker registered'))
-        .catch(err => console.log('Service Worker registration failed'));
-      }
-    </script>
-  </body>
-</html>
-              io: "sarò", tu: "sarai", lui: "sarà", noi: "saremo", voi: "sarete", loro: "saranno"
-            },
-            imperativo: {
-              tu: "sii", lui: "sia", noi: "siamo", voi: "siate", loro: "siano"
-            },
-            congiuntivo_presente: {
-              io: "sia", tu: "sia", lui: "sia", noi: "siamo", voi: "siate", loro: "siano"
-            },
-            condizionale: {
-              io: "sarei", tu: "saresti", lui: "sarebbe", noi: "saremmo", voi: "sareste", loro: "sarebbero"
-            }
-          }
-        },
-        "avere": {
-          translation: "to have",
-          regular: false,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "ho", tu: "hai", lui: "ha", noi: "abbiamo", voi: "avete", loro: "hanno"
-            },
-            passato_prossimo: {
-              io: "ho avuto", tu: "hai avuto", lui: "ha avuto", 
-              noi: "abbiamo avuto", voi: "avete avuto", loro: "hanno avuto"
-            },
-            futuro: {
-              io: "avrò", tu: "avrai", lui: "avrà", noi: "avremo", voi: "avrete", loro: "avranno"
-            },
-            imperativo: {
-              tu: "abbi", lui: "abbia", noi: "abbiamo", voi: "abbiate", loro: "abbiano"
-            },
-            congiuntivo_presente: {
-              io: "abbia", tu: "abbia", lui: "abbia", noi: "abbiamo", voi: "abbiate", loro: "abbiano"
-            },
-            condizionale: {
-              io: "avrei", tu: "avresti", lui: "avrebbe", noi: "avremmo", voi: "avreste", loro: "avrebbero"
-            }
-          }
-        },
-        "fare": {
-          translation: "to do/make",
-          regular: false,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "faccio", tu: "fai", lui: "fa", noi: "facciamo", voi: "fate", loro: "fanno"
-            },
-            passato_prossimo: {
-              io: "ho fatto", tu: "hai fatto", lui: "ha fatto", 
-              noi: "abbiamo fatto", voi: "avete fatto", loro: "hanno fatto"
-            },
-            futuro: {
-              io: "farò", tu: "farai", lui: "farà", noi: "faremo", voi: "farete", loro: "faranno"
-            },
-            imperativo: {
-              tu: "fa'/fai", lui: "faccia", noi: "facciamo", voi: "fate", loro: "facciano"
-            },
-            congiuntivo_presente: {
-              io: "faccia", tu: "faccia", lui: "faccia", noi: "facciamo", voi: "facciate", loro: "facciano"
-            },
-            condizionale: {
-              io: "farei", tu: "faresti", lui: "farebbe", noi: "faremmo", voi: "fareste", loro: "farebbero"
-            }
-          }
-        },
-        "dire": {
-          translation: "to say",
-          regular: false,
-          difficulty: "intermediate",
-          conjugations: {
-            presente: {
-              io: "dico", tu: "dici", lui: "dice", noi: "diciamo", voi: "dite", loro: "dicono"
-            },
-            passato_prossimo: {
-              io: "ho detto", tu: "hai detto", lui: "ha detto", 
-              noi: "abbiamo detto", voi: "avete detto", loro: "hanno detto"
-            },
-            futuro: {
-              io: "dirò", tu: "dirai", lui: "dirà", noi: "diremo", voi: "direte", loro: "diranno"
-            },
-            imperativo: {
-              tu: "di'", lui: "dica", noi: "diciamo", voi: "dite", loro: "dicano"
-            }
-          }
-        },
-        "andare": {
-          translation: "to go",
-          regular: false,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "vado", tu: "vai", lui: "va", noi: "andiamo", voi: "andate", loro: "vanno"
-            },
-            passato_prossimo: {
-              io: "sono andato/a", tu: "sei andato/a", lui: "è andato/a", 
-              noi: "siamo andati/e", voi: "siete andati/e", loro: "sono andati/e"
-            },
-            futuro: {
-              io: "andrò", tu: "andrai", lui: "andrà", noi: "andremo", voi: "andrete", loro: "andranno"
-            },
-            imperativo: {
-              tu: "va'/vai", lui: "vada", noi: "andiamo", voi: "andate", loro: "vadano"
-            }
-          }
-        },
-        "stare": {
-          translation: "to stay/be",
-          regular: false,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "sto", tu: "stai", lui: "sta", noi: "stiamo", voi: "state", loro: "stanno"
-            },
-            passato_prossimo: {
-              io: "sono stato/a", tu: "sei stato/a", lui: "è stato/a", 
-              noi: "siamo stati/e", voi: "siete stati/e", loro: "sono stati/e"
-            },
-            futuro: {
-              io: "starò", tu: "starai", lui: "starà", noi: "staremo", voi: "starete", loro: "staranno"
-            },
-            imperativo: {
-              tu: "sta'/stai", lui: "stia", noi: "stiamo", voi: "state", loro: "stiano"
-            }
-          }
-        },
-        "dare": {
-          translation: "to give",
-          regular: false,
-          difficulty: "intermediate",
-          conjugations: {
-            presente: {
-              io: "do", tu: "dai", lui: "dà", noi: "diamo", voi: "date", loro: "danno"
-            },
-            passato_prossimo: {
-              io: "ho dato", tu: "hai dato", lui: "ha dato", 
-              noi: "abbiamo dato", voi: "avete dato", loro: "hanno dato"
-            },
-            futuro: {
-              io: "darò", tu: "darai", lui: "darà", noi: "daremo", voi: "darete", loro: "daranno"
-            },
-            imperativo: {
-              tu: "da'/dai", lui: "dia", noi: "diamo", voi: "date", loro: "diano"
-            }
-          }
-        },
-        "sapere": {
-          translation: "to know",
-          regular: false,
-          difficulty: "intermediate",
-          conjugations: {
-            presente: {
-              io: "so", tu: "sai", lui: "sa", noi: "sappiamo", voi: "sapete", loro: "sanno"
-            },
-            passato_prossimo: {
-              io: "ho saputo", tu: "hai saputo", lui: "ha saputo", 
-              noi: "abbiamo saputo", voi: "avete saputo", loro: "hanno saputo"
-            },
-            futuro: {
-              io: "saprò", tu: "saprai", lui: "saprà", noi: "sapremo", voi: "saprete", loro: "sapranno"
-            },
-            imperativo: {
-              tu: "sappi", lui: "sappia", noi: "sappiamo", voi: "sappiate", loro: "sappiano"
-            }
-          }
-        },
-        "volere": {
-          translation: "to want",
-          regular: false,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "voglio", tu: "vuoi", lui: "vuole", noi: "vogliamo", voi: "volete", loro: "vogliono"
-            },
-            passato_prossimo: {
-              io: "ho voluto", tu: "hai voluto", lui: "ha voluto", 
-              noi: "abbiamo voluto", voi: "avete voluto", loro: "hanno voluto"
-            },
-            futuro: {
-              io: "vorrò", tu: "vorrai", lui: "vorrà", noi: "vorremo", voi: "vorrete", loro: "vorranno"
-            },
-            condizionale: {
-              io: "vorrei", tu: "vorresti", lui: "vorrebbe", noi: "vorremmo", voi: "vorreste", loro: "vorrebbero"
-            }
-          }
-        },
-        "potere": {
-          translation: "to be able",
-          regular: false,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "posso", tu: "puoi", lui: "può", noi: "possiamo", voi: "potete", loro: "possono"
-            },
-            passato_prossimo: {
-              io: "ho potuto", tu: "hai potuto", lui: "ha potuto", 
-              noi: "abbiamo potuto", voi: "avete potuto", loro: "hanno potuto"
-            },
-            futuro: {
-              io: "potrò", tu: "potrai", lui: "potrà", noi: "potremo", voi: "potrete", loro: "potranno"
-            },
-            condizionale: {
-              io: "potrei", tu: "potresti", lui: "potrebbe", noi: "potremmo", voi: "potreste", loro: "potrebbero"
-            }
-          }
-        },
-        "dovere": {
-          translation: "to have to",
-          regular: false,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "devo", tu: "devi", lui: "deve", noi: "dobbiamo", voi: "dovete", loro: "devono"
-            },
-            passato_prossimo: {
-              io: "ho dovuto", tu: "hai dovuto", lui: "ha dovuto", 
-              noi: "abbiamo dovuto", voi: "avete dovuto", loro: "hanno dovuto"
-            },
-            futuro: {
-              io: "dovrò", tu: "dovrai", lui: "dovrà", noi: "dovremo", voi: "dovrete", loro: "dovranno"
-            },
-            condizionale: {
-              io: "dovrei", tu: "dovresti", lui: "dovrebbe", noi: "dovremmo", voi: "dovreste", loro: "dovrebbero"
-            }
-          }
-        },
-        "venire": {
-          translation: "to come",
-          regular: false,
-          difficulty: "intermediate",
-          conjugations: {
-            presente: {
-              io: "vengo", tu: "vieni", lui: "viene", noi: "veniamo", voi: "venite", loro: "vengono"
-            },
-            passato_prossimo: {
-              io: "sono venuto/a", tu: "sei venuto/a", lui: "è venuto/a", 
-              noi: "siamo venuti/e", voi: "siete venuti/e", loro: "sono venuti/e"
-            },
-            futuro: {
-              io: "verrò", tu: "verrai", lui: "verrà", noi: "verremo", voi: "verrete", loro: "verranno"
-            },
-            imperativo: {
-              tu: "vieni", lui: "venga", noi: "veniamo", voi: "venite", loro: "vengano"
-            }
-          }
-        },
-        "uscire": {
-          translation: "to go out",
-          regular: false,
-          difficulty: "intermediate",
-          conjugations: {
-            presente: {
-              io: "esco", tu: "esci", lui: "esce", noi: "usciamo", voi: "uscite", loro: "escono"
-            },
-            passato_prossimo: {
-              io: "sono uscito/a", tu: "sei uscito/a", lui: "è uscito/a", 
-              noi: "siamo usciti/e", voi: "siete usciti/e", loro: "sono usciti/e"
-            },
-            futuro: {
-              io: "uscirò", tu: "uscirai", lui: "uscirà", noi: "usciremo", voi: "uscirete", loro: "usciranno"
-            },
-            imperativo: {
-              tu: "esci", lui: "esca", noi: "usciamo", voi: "uscite", loro: "escano"
-            }
-          }
-        },
-        "parlare": {
-          translation: "to speak",
-          regular: true,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "parlo", tu: "parli", lui: "parla", noi: "parliamo", voi: "parlate", loro: "parlano"
-            },
-            passato_prossimo: {
-              io: "ho parlato", tu: "hai parlato", lui: "ha parlato", 
-              noi: "abbiamo parlato", voi: "avete parlato", loro: "hanno parlato"
-            },
-            futuro: {
-              io: "parlerò", tu: "parlerai", lui: "parlerà", noi: "parleremo", voi: "parlerete", loro: "parleranno"
-            },
-            imperativo: {
-              tu: "parla", lui: "parli", noi: "parliamo", voi: "parlate", loro: "parlino"
-            },
-            congiuntivo_presente: {
-              io: "parli", tu: "parli", lui: "parli", noi: "parliamo", voi: "parliate", loro: "parlino"
-            },
-            condizionale: {
-              io: "parlerei", tu: "parleresti", lui: "parlerebbe", noi: "parleremmo", voi: "parlereste", loro: "parlerebbero"
-            }
-          }
-        },
-        "mangiare": {
-          translation: "to eat",
-          regular: true,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "mangio", tu: "mangi", lui: "mangia", noi: "mangiamo", voi: "mangiate", loro: "mangiano"
-            },
-            passato_prossimo: {
-              io: "ho mangiato", tu: "hai mangiato", lui: "ha mangiato", 
-              noi: "abbiamo mangiato", voi: "avete mangiato", loro: "hanno mangiato"
-            },
-            futuro: {
-              io: "mangerò", tu: "mangerai", lui: "mangerà", noi: "mangeremo", voi: "mangerete", loro: "mangeranno"
-            },
-            imperativo: {
-              tu: "mangia", lui: "mangi", noi: "mangiamo", voi: "mangiate", loro: "mangino"
-            }
-          }
-        },
-        "dormire": {
-          translation: "to sleep",
-          regular: true,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "dormo", tu: "dormi", lui: "dorme", noi: "dormiamo", voi: "dormite", loro: "dormono"
-            },
-            passato_prossimo: {
-              io: "ho dormito", tu: "hai dormito", lui: "ha dormito", 
-              noi: "abbiamo dormito", voi: "avete dormito", loro: "hanno dormito"
-            },
-            futuro: {
-              io: "dormirò", tu: "dormirai", lui: "dormirà", noi: "dormiremo", voi: "dormirete", loro: "dormiranno"
-            },
-            imperativo: {
-              tu: "dormi", lui: "dorma", noi: "dormiamo", voi: "dormite", loro: "dormano"
-            }
-          }
-        },
-        "lavorare": {
-          translation: "to work",
-          regular: true,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "lavoro", tu: "lavori", lui: "lavora", noi: "lavoriamo", voi: "lavorate", loro: "lavorano"
-            },
-            passato_prossimo: {
-              io: "ho lavorato", tu: "hai lavorato", lui: "ha lavorato", 
-              noi: "abbiamo lavorato", voi: "avete lavorato", loro: "hanno lavorato"
-            },
-            futuro: {
-              io: "lavorerò", tu: "lavorerai", lui: "lavorerà", noi: "lavoreremo", voi: "lavorerete", loro: "lavoreranno"
-            },
-            imperativo: {
-              tu: "lavora", lui: "lavori", noi: "lavoriamo", voi: "lavorate", loro: "lavorino"
-            }
-          }
-        },
-        "studiare": {
-          translation: "to study",
-          regular: true,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "studio", tu: "studi", lui: "studia", noi: "studiamo", voi: "studiate", loro: "studiano"
-            },
-            passato_prossimo: {
-              io: "ho studiato", tu: "hai studiato", lui: "ha studiato", 
-              noi: "abbiamo studiato", voi: "avete studiato", loro: "hanno studiato"
-            },
-            futuro: {
-              io: "studierò", tu: "studierai", lui: "studierà", noi: "studieremo", voi: "studierete", loro: "studieranno"
-            },
-            imperativo: {
-              tu: "studia", lui: "studi", noi: "studiamo", voi: "studiate", loro: "studino"
-            }
-          }
-        },
-        "abitare": {
-          translation: "to live",
-          regular: true,
-          difficulty: "beginner",
-          conjugations: {
-            presente: {
-              io: "abito", tu: "abiti", lui: "abita", noi: "abitiamo", voi: "abitate", loro: "abitano"
-            },
-            passato_prossimo: {
-              io: "ho abitato", tu: "hai abitato", lui: "ha abitato", 
-              noi: "abbiamo abitato", voi: "avete abitato", loro: "hanno abitato"
-            },
-            futuro: {
-              io: "abiterò", tu: "abiterai", lui: "abiterà", noi: "abiteremo", voi: "abiterete", loro: "abiteranno"
-            },
-            imperativo: {
-              tu: "abita", lui: "abiti", noi: "abitiamo", voi: "abitate", loro: "abitino"
-            }
-          }
-        },
-        "sentire": {
-          translation: "to feel/hear",
-          regular: true,
-          difficulty: "intermediate",
-          conjugations: {
-            presente: {
-              io: "sento", tu: "senti", lui: "sente", noi: "sentiamo", voi: "sentite", loro: "sentono"
-            },
-            passato_prossimo: {
-              io: "ho sentito", tu: "hai sentito", lui: "ha sentito", 
-              noi: "abbiamo sentito", voi: "avete sentito", loro: "hanno sentito"
-            },
-            futuro: {
-              io: "sentirò", tu: "sentirai", lui: "sentirà", noi: "sentiremo", voi: "sentirete", loro: "sentiranno"
-            },
-            imperativo: {
-              tu: "senti", lui: "senta", noi: "sentiamo", voi: "sentite", loro: "sentano"
-            }
-          }
-        }
-      };
-
-      // Conjugation type definitions
-      const conjugationTypes = {
-        basic: ['presente', 'passato_prossimo', 'futuro', 'imperativo'],
-        advanced: ['presente', 'passato_prossimo', 'futuro', 'imperativo', 'congiuntivo_presente', 'condizionale']
-      };
-
-      // Person definitions in Italian
-      const persons = {
-        io: "prima persona singolare",
-        tu: "seconda persona singolare", 
-        lui: "terza persona singolare",
-        noi: "prima persona plurale",
-        voi: "seconda persona plurale",
-        loro: "terza persona plurale"
-      };
-
-      // Tense names in Italian
-      const tenseNames = {
-        presente: "presente",
-        passato_prossimo: "passato prossimo",
-        futuro: "futuro",
-        imperativo: "imperativo",
-        congiuntivo_presente: "congiuntivo presente",
-        condizionale: "condizionale"
-      };
-
-      // Current practice state
-      let currentVerb = null;
-      let currentTense = null;
-      let currentPerson = null;
-      let currentAnswer = null;
-      let attempts = 0;
-      let maxAttempts = 3;
-
-      // Statistics
-      let stats = {
-        correct: 0,
-        total: 0,
-        currentStreak: 0,
-        bestStreak: 0,
-        recentMistakes: []
-      };
-
-      // Settings
-      let settings = {
-        verbLevel: 'advanced',
-        conjugationLevel: 'basic',
-        showRegularityHint: true,
-        allowMultipleAttempts: true
-      };
-
-      // Function to pronounce Italian words using ResponsiveVoice
-      function pronounceWord(word) {
-        if (typeof responsiveVoice !== "undefined") {
-          responsiveVoice.speak(word, "Italian Male", {
-            rate: 0.95,
-            pitch: 1,
-            volume: 1,
-          });
-        } else {
-          console.log("ResponsiveVoice not loaded yet");
-          alert("Pronunciation feature is still loading. Please try again in a moment.");
-        }
-      }
-
-      // Open Italian conjugation in new tab
-      function openConjugation(verb) {
-        const conjugationUrl = `https://conjugator.reverso.net/conjugation-italian-verb-${encodeURIComponent(verb)}.html`;
-        window.open(conjugationUrl, "_blank");
-      }
-
-      // Normalize text for comparison (remove accents, case insensitive)
-      function normalizeText(text) {
-        return text
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "") // Remove accent marks
-          .replace(/['']/g, "'") // Normalize apostrophes
-          .trim();
-      }
-
-      // Get available verbs based on current difficulty setting
-      function getAvailableVerbs() {
-        const targetDifficulties = [];
-        
-        if (settings.verbLevel === 'beginner') {
-          targetDifficulties.push('beginner');
-        } else if (settings.verbLevel === 'intermediate') {
-          targetDifficulties.push('beginner', 'intermediate');
-        } else {
-          targetDifficulties.push('beginner', 'intermediate', 'advanced');
-        }
-
-        return Object.keys(verbDatabase).filter(verb => 
-          targetDifficulties.includes(verbDatabase[verb].difficulty)
-        );
-      }
-
-      // Get available tenses based on conjugation level setting
-      function getAvailableTenses(verb) {
-        const verbData = verbDatabase[verb];
-        const availableForLevel = conjugationTypes[settings.conjugationLevel];
-        
-        return availableForLevel.filter(tense => 
-          verbData.conjugations[tense] !== undefined
-        );
-      }
-
-      // Get new random verb conjugation challenge
-      function getNewVerb() {
-        const availableVerbs = getAvailableVerbs();
-        
-        if (availableVerbs.length === 0) {
-          showFeedback('No verbs available for current settings', 'error');
-          return;
-        }
-
-        // Select random verb
-        currentVerb = availableVerbs[Math.floor(Math.random() * availableVerbs.length)];
-        
-        // Get available tenses for this verb
-        const availableTenses = getAvailableTenses(currentVerb);
-        
-        if (availableTenses.length === 0) {
-          showFeedback('No tenses available for this verb', 'error');
-          return;
-        }
-
-        // Select random tense
-        currentTense = availableTenses[Math.floor(Math.random() * availableTenses.length)];
-        
-        // Select random person
-        const availablePersons = Object.keys(verbDatabase[currentVerb].conjugations[currentTense]);
-        currentPerson = availablePersons[Math.floor(Math.random() * availablePersons.length)];
-        
-        // Get correct answer
-        currentAnswer = verbDatabase[currentVerb].conjugations[currentTense][currentPerson];
-        
-        // Reset attempts
-        attempts = 0;
-        
-        // Display the challenge
-        displayChallenge();
-        
-        // Clear previous feedback
-        hideFeedback();
-        
-        console.log(`New challenge: ${currentVerb} - ${currentTense} - ${currentPerson} = ${currentAnswer}`);
-      }
-
-      // Display the current challenge
-      function displayChallenge() {
-        const display = document.getElementById('conjugationDisplay');
-        const verbData = verbDatabase[currentVerb];
-        
-        const regularityHint = settings.showRegularityHint ? 
-          `<div style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px;">
-            ${verbData.regular ? '✓ Regular verb' : '⚠️ Irregular verb'}
-          </div>` : '';
-
-        display.innerHTML = `
-          <div class="verb-prompt">
-            ${currentVerb}
-            <span class="speaker-icon" onclick="pronounceWord('${currentVerb}')" title="Pronounce verb">🔊</span>
-            <span class="dict-icon" onclick="openConjugation('${currentVerb}')" title="View full conjugation">📖</span>
-          </div>
-          <div style="font-size: 1.1em; color: #6c757d; margin-bottom: 15px;">
-            ${verbData.translation}
-          </div>
-          ${regularityHint}
-          <div class="conjugation-prompt">
-            ${tenseNames[currentTense]} - ${persons[currentPerson]}
-          </div>
-          <div class="answer-section">
-            <input type="text" class="answer-input" id="answerInput" 
-                   placeholder="Type your answer..." onkeypress="handleKeyPress(event)">
-          </div>
-          <div class="controls" style="margin-top: 15px;">
-            <button class="btn" onclick="checkAnswer()">Check Answer</button>
-            <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
-          </div>
-        `;
-        
-        // Focus on input
-        document.getElementById('answerInput').focus();
-      }
-
-      // Handle Enter key press
-      function handleKeyPress(event) {
-        if (event.key === 'Enter') {
-          checkAnswer();
-        }
-      }
-
-      // Check the user's answer
-      function checkAnswer() {
-        const userAnswer = document.getElementById('answerInput').value.trim();
-        
-        if (!userAnswer) {
-          showFeedback('Please enter an answer', 'error');
-          return;
-        }
-
-        attempts++;
-        
-        // Normalize both answers for comparison
-        const normalizedUser = normalizeText(userAnswer);
-        const normalizedCorrect = normalizeText(currentAnswer);
-        
-        if (normalizedUser === normalizedCorrect) {
-          // Correct answer
-          handleCorrectAnswer();
-        } else {
-          // Wrong answer
-          handleWrongAnswer(userAnswer);
-        }
-      }
-
-      // Handle correct answer
-      function handleCorrectAnswer() {
-        const input = document.getElementById('answerInput');
-        input.className = 'answer-input correct';
-        input.disabled = true;
-        
-        // Update stats
-        stats.correct++;
-        stats.total++;
-        stats.currentStreak++;
-        
-        if (stats.currentStreak > stats.bestStreak) {
-          stats.bestStreak = stats.currentStreak;
-        }
-        
-        updateStatsDisplay();
-        
-        showFeedback(`Correct! 🎉`, 'success');
-        
-        // Auto-advance after 2 seconds
-        setTimeout(() => {
-          getNewVerb();
-        }, 2000);
-      }
-
-      // Handle wrong answer
-      function handleWrongAnswer(userAnswer) {
-        const input = document.getElementById('answerInput');
-        input.className = 'answer-input incorrect';
-        
-        stats.total++;
-        stats.currentStreak = 0;
-        
-        // Add to recent mistakes
-        stats.recentMistakes.unshift({
-          verb: currentVerb,
-          tense: currentTense,
-          person: currentPerson,
-          userAnswer: userAnswer,
-          correctAnswer: currentAnswer,
-          timestamp: new Date()
-        });
-        
-        // Keep only last 10 mistakes
-        if (stats.recentMistakes.length > 10) {
-          stats.recentMistakes = stats.recentMistakes.slice(0, 10);
-        }
-        
-        updateStatsDisplay();
-        updateRecentMistakes();
-        
-        if (settings.allowMultipleAttempts && attempts < maxAttempts) {
-          showFeedback(`Not quite right. Try again! (Attempt ${attempts}/${maxAttempts})`, 'error');
-          
-          // Reset input style after a moment and let them try again
-          setTimeout(() => {
-            input.className = 'answer-input';
-            input.value = '';
-            input.focus();
-          }, 1500);
-        } else {
-          showFeedback(`Incorrect. The answer is: <strong>${currentAnswer}</strong>`, 'error');
-          input.disabled = true;
-          
-          // Auto-advance after 3 seconds
-          setTimeout(() => {
-            getNewVerb();
-          }, 3000);
-        }
-      }
-
-      // Show correct answer
-      function showCorrectAnswer() {
-        const input = document.getElementById('answerInput');
-        input.value = currentAnswer;
-        input.className = 'answer-input';
-        input.disabled = true;
-        
-        showFeedback(`The correct answer is: <strong>${currentAnswer}</strong>`, 'info');
-        
-        // This counts as getting it wrong for stats
-        stats.total++;
-        stats.currentStreak = 0;
-        updateStatsDisplay();
-        
-        // Auto-advance after 3 seconds
-        setTimeout(() => {
-          getNewVerb();
-        }, 3000);
-      }
-
-      // Show feedback message
-      function showFeedback(message, type) {
-        const feedback = document.querySelector('.feedback-section');
-        if (!feedback) {
-          // Create feedback section if it doesn't exist
-          const feedbackDiv = document.createElement('div');
-          feedbackDiv.className = 'feedback-section';
-          document.getElementById('conjugationDisplay').appendChild(feedbackDiv);
-        }
-        
-        const feedbackElement = document.querySelector('.feedback-section');
-        feedbackElement.innerHTML = message;
-        feedbackElement.className = `feedback-section ${type}`;
-      }
-
-      // Hide feedback
-      function hideFeedback() {
-        const feedback = document.querySelector('.feedback-section');
-        if (feedback) {
-          feedback.className = 'feedback-section';
-        }
-      }
-
-      // Update statistics display
-      function updateStatsDisplay() {
-        document.getElementById('correctCount').textContent = stats.correct;
-        document.getElementById('totalCount').textContent = stats.total;
-        
-        const accuracy = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
-        document.getElementById('accuracyPercent').textContent = accuracy + '%';
-        
-        document.getElementById('sessionLength').textContent = stats.total;
-        document.getElementById('currentStreak').textContent = stats.currentStreak;
-        document.getElementById('bestStreak').textContent = stats.bestStreak;
-      }
-
-      // Update recent mistakes display
-      function updateRecentMistakes() {
-        const container = document.getElementById('recentMistakes');
-        
-        if (stats.recentMistakes.length === 0) {
-          container.innerHTML = '<p style="color: #6c757d; font-style: italic; text-align: center;">No mistakes yet - great job!</p>';
-          return;
-        }
-        
-        const mistakesHtml = stats.recentMistakes.map(mistake => `
-          <div style="background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 3px solid #dc3545;">
-            <strong>${mistake.verb}</strong> (${tenseNames[mistake.tense]} - ${persons[mistake.person]})<br>
-            <span style="color: #dc3545;">Your answer: ${mistake.userAnswer}</span><br>
-            <span style="color: #28a745;">Correct: ${mistake.correctAnswer}</span>
-          </div>
-        `).join('');
-        
-        container.innerHTML = mistakesHtml;
-      }
-
-      // Reset statistics
-      function resetStats() {
-        stats = {
-          correct: 0,
-          total: 0,
-          currentStreak: 0,
-          bestStreak: 0,
-          recentMistakes: []
-        };
-        
-        updateStatsDisplay();
-        updateRecentMistakes();
-        
-        showFeedback('Statistics reset!', 'info');
-        setTimeout(hideFeedback, 2000);
-      }
-
-      // Update settings
-      function updateSettings() {
-        settings.verbLevel = document.getElementById('verbLevel').value;
-        settings.conjugationLevel = document.getElementById('conjugationLevel').value;
-        settings.showRegularityHint = document.getElementById('showRegularityHint').checked;
-        settings.allowMultipleAttempts = document.getElementById('allowMultipleAttempts').checked;
-        
-        // Update verb count display
-        const availableVerbs = getAvailableVerbs();
-        document.getElementById('verbCountDisplay').textContent = availableVerbs.length;
-        
-        console.log('Settings updated:', settings);
-      }
-
-      // Tab switching functionality
-      function setupTabSwitching() {
-        document.querySelectorAll('.tab').forEach(tab => {
-          tab.addEventListener('click', () => {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
-          });
-        });
-      }
-
-      // Initialize the app
-      function initializeApp() {
-        setupTabSwitching();
-        updateSettings();
-        updateStatsDisplay();
-        updateRecentMistakes();
-        
-        console.log('Italian Conjugation Practice app initialized');
-        console.log('Available verbs:', Object.keys(verbDatabase).length);
-      }
-
-      // Wait for DOM to be ready before initializing
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeApp);
-      } else {
-        initializeApp();
-      }
-
-      // Register service worker for PWA functionality
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('data:text/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZXZlbnQgPT4gewogIGV2ZW50LndhaXRVbnRpbChzZWxmLnNraXBXYWl0aW5nKCkpOwp9KTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBldmVudCA9PiB7CiAgZXZlbnQud2FpdFVudGlsKHNlbGYuY2xpZW50cy5jbGFpbSgpKTsKfSk7CgpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZXZlbnQgPT4gewogIGV2ZW50LnJlc3BvbmRXaXRoKGZldGNoKGV2ZW50LnJlcXVlc3QpKTsKfSk7')
-        .then(() => console.log('Service Worker registered'))
-        .catch(err => console.log('Service Worker registration failed'));
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register(
+            "data:text/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZXZlbnQgPT4gewogIGV2ZW50LndhaXRVbnRpbChzZWxmLnNraXBXYWl0aW5nKCkpOwp9KTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBldmVudCA9PiB7CiAgZXZlbnQud2FpdFVudGlsKHNlbGYuY2xpZW50cy5jbGFpbSgpKTsKfSk7CgpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZXZlbnQgPT4gewogIGV2ZW50LnJlc3BvbmRXaXRoKGZldGNoKGV2ZW50LnJlcXVlc3QpKTsKfSk7"
+          )
+          .then(() => console.log("Service Worker registered"))
+          .catch((err) => console.log("Service Worker registration failed"));
       }
     </script>
   </body>
