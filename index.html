@@ -514,20 +514,6 @@
                   </button>
                 </div>
               </div>
-
-              <div style="margin-top: 15px; text-align: center">
-                <label
-                  style="
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    justify-content: center;
-                  "
-                >
-                  <input type="checkbox" id="showRegularityHint" checked />
-                  Show regularity hints
-                </label>
-              </div>
             </div>
 
             <div class="conjugation-display" id="conjugationDisplay">
@@ -1561,7 +1547,6 @@
         verbLevelStart: "beginner",
         verbLevelEnd: "advanced",
         selectedTenses: [...basicTenses],
-        showRegularityHint: true,
       };
 
       // Function to pronounce Italian words using ResponsiveVoice
@@ -1762,11 +1747,9 @@
     <div style="font-size: 1.1em; color: #6c757d; margin-bottom: 15px;">
       ${verbData.translation}
     </div>
-    <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: ${
-      settings.showRegularityHint ? "block" : "none"
-    };">
-      ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
-    </div>
+    <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: none;">
+  ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
+</div>
     <div class="conjugation-prompt">
       ${allTenses[currentTense]} - ${persons[currentPerson]}
     </div>
@@ -1775,9 +1758,10 @@
              placeholder="Type your answer..." onkeypress="handleKeyPress(event)">
     </div>
     <div class="controls" style="margin-top: 15px;">
-      <button class="btn" onclick="checkAnswer()">Check Answer</button>
-      <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
-    </div>
+  <button class="btn" onclick="checkAnswer()">Check Answer</button>
+  <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
+  <button class="btn btn-secondary" onclick="toggleRegularityHint()">Show Hint</button>
+</div>
   `;
 
         // Focus on input
@@ -1900,6 +1884,20 @@
         updateStatsDisplay();
       }
 
+      // Toggle regularity hint visibility
+      function toggleRegularityHint() {
+        const hint = document.getElementById("regularityHint");
+        const button = event.target;
+
+        if (hint.style.display === "none") {
+          hint.style.display = "block";
+          button.textContent = "Hide Hint";
+        } else {
+          hint.style.display = "none";
+          button.textContent = "Show Hint";
+        }
+      }
+
       // Show feedback message
       function showFeedback(message, type) {
         const feedback = document.querySelector(".feedback-section");
@@ -2006,8 +2004,6 @@
         }
 
         settings.verbLevelStart = levelStart;
-        settings.showRegularityHint =
-          document.getElementById("showRegularityHint").checked;
 
         console.log("Settings updated:", settings);
       }
