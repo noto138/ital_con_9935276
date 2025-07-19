@@ -91,34 +91,106 @@
         margin-bottom: 30px;
       }
 
-      .level-selectors {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-      }
-
-      .level-group {
+      .settings-panel {
         background: #f8f9fa;
-        padding: 15px;
         border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
         border: 1px solid #dee2e6;
       }
 
-      .level-group label {
+      .settings-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .settings-group {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        min-width: 250px;
+      }
+
+      .settings-group label {
         font-weight: 600;
         color: #495057;
         display: block;
         margin-bottom: 8px;
       }
 
-      .level-group select {
+      .level-range {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .level-range select {
         padding: 8px 12px;
         border: 1px solid #dee2e6;
         border-radius: 5px;
         font-size: 1em;
         background: white;
+      }
+
+      .tense-selection {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        text-align: left;
+      }
+
+      .tense-checkboxes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .tense-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .tense-checkbox input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+      }
+
+      .tense-checkbox label {
+        font-weight: normal;
+        margin: 0;
+        cursor: pointer;
+      }
+
+      .select-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        justify-content: center;
+      }
+
+      .btn-small {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-size: 0.85em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-small:hover {
+        background: #5a6268;
+        transform: translateY(-1px);
       }
 
       .conjugation-display {
@@ -343,9 +415,8 @@
           font-size: 2em;
         }
 
-        .level-selectors {
+        .settings-row {
           flex-direction: column;
-          align-items: center;
         }
 
         .controls {
@@ -360,6 +431,10 @@
           flex-direction: column;
           gap: 10px;
         }
+
+        .tense-checkboxes {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -373,7 +448,6 @@
       <div class="card">
         <div class="tabs">
           <button class="tab active" data-tab="practice">Practice</button>
-          <button class="tab" data-tab="settings">Settings</button>
           <button class="tab" data-tab="progress">Progress</button>
           <button class="tab" data-tab="info">Info</button>
         </div>
@@ -395,6 +469,67 @@
               </div>
             </div>
 
+            <div class="settings-panel">
+              <div class="settings-row">
+                <div class="settings-group">
+                  <label>Verb Difficulty Range:</label>
+                  <div class="level-range">
+                    <select id="verbLevelStart" onchange="updateSettings()">
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
+                    </select>
+                    <span>to</span>
+                    <select id="verbLevelEnd" onchange="updateSettings()">
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced" selected>Advanced</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tense-selection">
+                <label
+                  style="
+                    font-weight: 600;
+                    color: #495057;
+                    margin-bottom: 10px;
+                    display: block;
+                  "
+                  >Select Tenses to Practice:</label
+                >
+                <div class="tense-checkboxes" id="tenseCheckboxes">
+                  <!-- Checkboxes will be populated by JavaScript -->
+                </div>
+                <div class="select-buttons">
+                  <button class="btn-small" onclick="selectAllTenses()">
+                    Select All
+                  </button>
+                  <button class="btn-small" onclick="selectBasicTenses()">
+                    Basic Only
+                  </button>
+                  <button class="btn-small" onclick="clearAllTenses()">
+                    Clear All
+                  </button>
+                </div>
+              </div>
+
+              <div style="margin-top: 15px; text-align: center">
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    justify-content: center;
+                  "
+                >
+                  <input type="checkbox" id="showRegularityHint" checked />
+                  Show regularity hints
+                </label>
+              </div>
+            </div>
+
             <div class="conjugation-display" id="conjugationDisplay">
               <div class="empty-state">
                 Click "New Verb" to start practicing!
@@ -407,58 +542,6 @@
                 Reset Stats
               </button>
             </div>
-          </div>
-        </div>
-
-        <div class="tab-content" id="settings">
-          <div class="level-selectors">
-            <div class="level-group">
-              <label>Verb Difficulty:</label>
-              <select id="verbLevel" onchange="updateSettings()">
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced" selected>Advanced</option>
-              </select>
-            </div>
-            <div class="level-group">
-              <label>Conjugation Types:</label>
-              <select id="conjugationLevel" onchange="updateSettings()">
-                <option value="basic" selected>Basic</option>
-                <option value="advanced">Advanced</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="margin-top: 30px">
-            <h4 style="text-align: center; margin-bottom: 15px">
-              Practice Options
-            </h4>
-
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 15px;
-                justify-content: center;
-              "
-            >
-              <label style="display: flex; align-items: center; gap: 8px">
-                <input type="checkbox" id="showRegularityHint" checked />
-                Show regularity hints
-              </label>
-              <label style="display: flex; align-items: center; gap: 8px">
-                <input type="checkbox" id="allowMultipleAttempts" checked />
-                Allow multiple attempts
-              </label>
-            </div>
-          </div>
-
-          <div style="margin-top: 30px; text-align: center">
-            <h4 style="margin-bottom: 15px">Available Verbs</h4>
-            <p style="color: #6c757d; font-size: 0.9em">
-              Currently practicing with
-              <span id="verbCountDisplay">20</span> verbs
-            </p>
           </div>
         </div>
 
@@ -503,16 +586,11 @@
 
             <h4>How to Use:</h4>
             <p>
-              <strong>Practice Tab:</strong> Click "New Verb" to get a random
-              verb and conjugation challenge. Type your answer and press Enter
-              to submit. If wrong, you can try again or reveal the correct
-              answer.
-            </p>
-
-            <p>
-              <strong>Settings Tab:</strong> Choose your verb difficulty level
-              and conjugation complexity. Beginner verbs include the most common
-              ones, while Advanced includes more irregular and complex verbs.
+              <strong>Practice Tab:</strong> Set your difficulty range and
+              select which tenses you want to practice. Click "New Verb" to get
+              a random verb and conjugation challenge. Type your answer and
+              press Enter to submit. After checking your answer, click "New
+              Verb" again to continue.
             </p>
 
             <h4>Features:</h4>
@@ -525,28 +603,29 @@
                 💡 Regularity hints show if a verb follows regular patterns
               </li>
               <li>📊 Track your accuracy and progress over time</li>
-              <li>🎯 Focus on specific tenses and difficulty levels</li>
+              <li>🎯 Choose specific tenses and difficulty levels</li>
+              <li>🎚️ Use difficulty ranges from beginner to advanced</li>
             </ul>
 
-            <h4>Conjugation Types:</h4>
+            <h4>Difficulty Levels:</h4>
             <p>
-              <strong>Basic:</strong> Present tense, Past tense (Passato
-              Prossimo), Future tense, and Imperative mood.
+              <strong>Beginner:</strong> Most common Italian verbs<br />
+              <strong>Intermediate:</strong> Common and some irregular verbs<br />
+              <strong>Advanced:</strong> Complex and irregular verbs
             </p>
+
+            <h4>Available Tenses:</h4>
             <p>
-              <strong>Advanced:</strong> Includes Subjunctive, Conditional,
-              Imperfect, and other complex tenses.
+              Choose from present, imperfect, past, future, conditional,
+              subjunctive, and imperative forms. Use "Basic Only" for essential
+              tenses or "Select All" for comprehensive practice.
             </p>
 
             <h4>Tips:</h4>
             <ul>
+              <li>Start with Basic tenses and Beginner-Intermediate range</li>
               <li>
-                Start with Basic conjugations and Beginner verbs to build
-                confidence
-              </li>
-              <li>
-                Pay attention to the grammatical terminology - it helps
-                reinforce learning
+                The app won't auto-advance - you control when to get a new verb
               </li>
               <li>
                 Use the pronunciation feature to improve your spoken Italian
@@ -565,14 +644,13 @@
     </div>
 
     <script>
-      // Verb conjugation database - 20 most common Italian verbs
+      // Verb conjugation database - same as before
       const verbDatabase = {
         essere: {
           translation: "to be",
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "sono",
               tu: "sei",
@@ -605,7 +683,6 @@
               voi: "sarete",
               loro: "saranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "sarei",
               tu: "saresti",
@@ -622,7 +699,6 @@
               voi: "sareste stati/e",
               loro: "sarebbero stati/e",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "sia",
               tu: "sia",
@@ -647,7 +723,6 @@
               voi: "foste",
               loro: "fossero",
             },
-            // IMPERATIVO
             imperativo_presente: {
               tu: "sii",
               lui: "sia",
@@ -662,7 +737,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "ho",
               tu: "hai",
@@ -695,7 +769,6 @@
               voi: "avrete",
               loro: "avranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "avrei",
               tu: "avresti",
@@ -712,7 +785,6 @@
               voi: "avreste avuto",
               loro: "avrebbero avuto",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "abbia",
               tu: "abbia",
@@ -737,7 +809,6 @@
               voi: "aveste",
               loro: "avessero",
             },
-            // IMPERATIVO
             imperativo_presente: {
               tu: "abbi",
               lui: "abbia",
@@ -752,7 +823,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "faccio",
               tu: "fai",
@@ -785,7 +855,6 @@
               voi: "farete",
               loro: "faranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "farei",
               tu: "faresti",
@@ -802,7 +871,6 @@
               voi: "avreste fatto",
               loro: "avrebbero fatto",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "faccia",
               tu: "faccia",
@@ -827,7 +895,6 @@
               voi: "faceste",
               loro: "facessero",
             },
-            // IMPERATIVO
             imperativo_presente: {
               tu: "fa'",
               lui: "faccia",
@@ -842,7 +909,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "dico",
               tu: "dici",
@@ -875,7 +941,6 @@
               voi: "direte",
               loro: "diranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "direi",
               tu: "diresti",
@@ -892,7 +957,6 @@
               voi: "avreste detto",
               loro: "avrebbero detto",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "dica",
               tu: "dica",
@@ -917,7 +981,6 @@
               voi: "diceste",
               loro: "dicessero",
             },
-            // IMPERATIVO
             imperativo_presente: {
               tu: "di'",
               lui: "dica",
@@ -932,7 +995,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "vado",
               tu: "vai",
@@ -965,7 +1027,6 @@
               voi: "andrete",
               loro: "andranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "andrei",
               tu: "andresti",
@@ -982,7 +1043,6 @@
               voi: "sareste andati/e",
               loro: "sarebbero andati/e",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "vada",
               tu: "vada",
@@ -1007,7 +1067,6 @@
               voi: "andaste",
               loro: "andassero",
             },
-            // IMPERATIVO
             imperativo_presente: {
               tu: "va'",
               lui: "vada",
@@ -1022,7 +1081,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "sto",
               tu: "stai",
@@ -1055,7 +1113,6 @@
               voi: "starete",
               loro: "staranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "starei",
               tu: "staresti",
@@ -1072,7 +1129,6 @@
               voi: "sareste stati/e",
               loro: "sarebbero stati/e",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "stia",
               tu: "stia",
@@ -1097,7 +1153,6 @@
               voi: "steste",
               loro: "stessero",
             },
-            // IMPERATIVO
             imperativo_presente: {
               tu: "sta'",
               lui: "stia",
@@ -1112,7 +1167,6 @@
           regular: false,
           difficulty: "intermediate",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "vengo",
               tu: "vieni",
@@ -1145,7 +1199,6 @@
               voi: "verrete",
               loro: "verranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "verrei",
               tu: "verresti",
@@ -1162,7 +1215,6 @@
               voi: "sareste venuti/e",
               loro: "sarebbero venuti/e",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "venga",
               tu: "venga",
@@ -1187,7 +1239,6 @@
               voi: "veniste",
               loro: "venissero",
             },
-            // IMPERATIVO
             imperativo_presente: {
               tu: "vieni",
               lui: "venga",
@@ -1202,7 +1253,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "devo",
               tu: "devi",
@@ -1235,7 +1285,6 @@
               voi: "dovrete",
               loro: "dovranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "dovrei",
               tu: "dovresti",
@@ -1252,7 +1301,6 @@
               voi: "avreste dovuto",
               loro: "avrebbero dovuto",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "debba",
               tu: "debba",
@@ -1277,7 +1325,6 @@
               voi: "doveste",
               loro: "dovessero",
             },
-            // IMPERATIVO - Modal verbs typically don't have imperativo
             imperativo_presente: {
               tu: "-",
               lui: "-",
@@ -1292,7 +1339,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "posso",
               tu: "puoi",
@@ -1325,7 +1371,6 @@
               voi: "potrete",
               loro: "potranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "potrei",
               tu: "potresti",
@@ -1342,7 +1387,6 @@
               voi: "avreste potuto",
               loro: "avrebbero potuto",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "possa",
               tu: "possa",
@@ -1367,7 +1411,6 @@
               voi: "poteste",
               loro: "potessero",
             },
-            // IMPERATIVO - Modal verbs typically don't have imperativo
             imperativo_presente: {
               tu: "-",
               lui: "-",
@@ -1382,7 +1425,6 @@
           regular: false,
           difficulty: "beginner",
           conjugations: {
-            // INDICATIVO
             presente: {
               io: "voglio",
               tu: "vuoi",
@@ -1415,7 +1457,6 @@
               voi: "vorrete",
               loro: "vorranno",
             },
-            // CONDIZIONALE
             condizionale_presente: {
               io: "vorrei",
               tu: "vorresti",
@@ -1432,7 +1473,6 @@
               voi: "avreste voluto",
               loro: "avrebbero voluto",
             },
-            // CONGIUNTIVO
             congiuntivo_presente: {
               io: "voglia",
               tu: "voglia",
@@ -1457,7 +1497,6 @@
               voi: "voleste",
               loro: "volessero",
             },
-            // IMPERATIVO - Modal verbs typically don't have imperativo
             imperativo_presente: {
               tu: "-",
               lui: "-",
@@ -1469,40 +1508,26 @@
         },
       };
 
-      // Conjugation type definitions
-      const conjugationTypes = {
-        basic: [
-          "presente",
-          "passato_prossimo",
-          "futuro_semplice",
-          "imperativo_presente",
-        ],
-        advanced: [
-          "presente",
-          "imperfetto",
-          "passato_prossimo",
-          "futuro_semplice",
-          "condizionale_presente",
-          "condizionale_passato",
-          "congiuntivo_presente",
-          "congiuntivo_passato",
-          "congiuntivo_imperfetto",
-          "imperativo_presente",
-        ],
+      // Available tenses with their display names
+      const allTenses = {
+        presente: "Presente",
+        imperfetto: "Imperfetto",
+        passato_prossimo: "Passato Prossimo",
+        futuro_semplice: "Futuro Semplice",
+        condizionale_presente: "Condizionale Presente",
+        condizionale_passato: "Condizionale Passato",
+        congiuntivo_presente: "Congiuntivo Presente",
+        congiuntivo_passato: "Congiuntivo Passato",
+        congiuntivo_imperfetto: "Congiuntivo Imperfetto",
+        imperativo_presente: "Imperativo",
       };
 
-      const tenseNames = {
-        presente: "presente",
-        imperfetto: "imperfetto",
-        passato_prossimo: "passato prossimo",
-        futuro_semplice: "futuro semplice",
-        condizionale_presente: "condizionale presente",
-        condizionale_passato: "condizionale passato",
-        congiuntivo_presente: "congiuntivo presente",
-        congiuntivo_passato: "congiuntivo passato",
-        congiuntivo_imperfetto: "congiuntivo imperfetto",
-        imperativo_presente: "imperativo",
-      };
+      const basicTenses = [
+        "presente",
+        "passato_prossimo",
+        "futuro_semplice",
+        "imperativo_presente",
+      ];
 
       // Person definitions in Italian
       const persons = {
@@ -1533,10 +1558,10 @@
 
       // Settings
       let settings = {
-        verbLevel: "advanced",
-        conjugationLevel: "basic",
+        verbLevelStart: "beginner",
+        verbLevelEnd: "advanced",
+        selectedTenses: [...basicTenses],
         showRegularityHint: true,
-        allowMultipleAttempts: true,
       };
 
       // Function to pronounce Italian words using ResponsiveVoice
@@ -1573,30 +1598,23 @@
           .trim();
       }
 
-      // Get available verbs based on current difficulty setting
+      // Get available verbs based on current difficulty range
       function getAvailableVerbs() {
-        const targetDifficulties = [];
-
-        if (settings.verbLevel === "beginner") {
-          targetDifficulties.push("beginner");
-        } else if (settings.verbLevel === "intermediate") {
-          targetDifficulties.push("beginner", "intermediate");
-        } else {
-          targetDifficulties.push("beginner", "intermediate", "advanced");
-        }
+        const levelOrder = ["beginner", "intermediate", "advanced"];
+        const startIndex = levelOrder.indexOf(settings.verbLevelStart);
+        const endIndex = levelOrder.indexOf(settings.verbLevelEnd);
+        const targetLevels = levelOrder.slice(startIndex, endIndex + 1);
 
         return Object.keys(verbDatabase).filter((verb) =>
-          targetDifficulties.includes(verbDatabase[verb].difficulty)
+          targetLevels.includes(verbDatabase[verb].difficulty)
         );
       }
 
-      // Get available tenses based on conjugation level setting
-      // Update getAvailableTenses to handle empty conjugations
+      // Get available tenses based on selected tenses
       function getAvailableTenses(verb) {
         const verbData = verbDatabase[verb];
-        const availableForLevel = conjugationTypes[settings.conjugationLevel];
 
-        return availableForLevel.filter((tense) => {
+        return settings.selectedTenses.filter((tense) => {
           const conjugation = verbData.conjugations[tense];
           if (!conjugation) return false;
 
@@ -1607,12 +1625,79 @@
         });
       }
 
+      // Initialize tense checkboxes
+      function initializeTenseCheckboxes() {
+        const container = document.getElementById("tenseCheckboxes");
+        container.innerHTML = "";
+
+        Object.entries(allTenses).forEach(([tenseKey, tenseName]) => {
+          const checked = settings.selectedTenses.includes(tenseKey)
+            ? "checked"
+            : "";
+          container.innerHTML += `
+            <div class="tense-checkbox">
+              <input type="checkbox" id="tense-${tenseKey}" value="${tenseKey}" ${checked} onchange="updateSelectedTenses()">
+              <label for="tense-${tenseKey}">${tenseName}</label>
+            </div>
+          `;
+        });
+      }
+
+      // Update selected tenses from checkboxes
+      function updateSelectedTenses() {
+        const checkboxes = document.querySelectorAll(
+          '#tenseCheckboxes input[type="checkbox"]'
+        );
+        settings.selectedTenses = Array.from(checkboxes)
+          .filter((cb) => cb.checked)
+          .map((cb) => cb.value);
+
+        console.log("Selected tenses:", settings.selectedTenses);
+      }
+
+      // Select all tenses
+      function selectAllTenses() {
+        const checkboxes = document.querySelectorAll(
+          '#tenseCheckboxes input[type="checkbox"]'
+        );
+        checkboxes.forEach((cb) => (cb.checked = true));
+        updateSelectedTenses();
+      }
+
+      // Select only basic tenses
+      function selectBasicTenses() {
+        const checkboxes = document.querySelectorAll(
+          '#tenseCheckboxes input[type="checkbox"]'
+        );
+        checkboxes.forEach((cb) => {
+          cb.checked = basicTenses.includes(cb.value);
+        });
+        updateSelectedTenses();
+      }
+
+      // Clear all tenses
+      function clearAllTenses() {
+        const checkboxes = document.querySelectorAll(
+          '#tenseCheckboxes input[type="checkbox"]'
+        );
+        checkboxes.forEach((cb) => (cb.checked = false));
+        updateSelectedTenses();
+      }
+
       // Get new random verb conjugation challenge
       function getNewVerb() {
+        if (settings.selectedTenses.length === 0) {
+          showFeedback("Please select at least one tense to practice", "error");
+          return;
+        }
+
         const availableVerbs = getAvailableVerbs();
 
         if (availableVerbs.length === 0) {
-          showFeedback("No verbs available for current settings", "error");
+          showFeedback(
+            "No verbs available for current difficulty range",
+            "error"
+          );
           return;
         }
 
@@ -1624,7 +1709,7 @@
         const availableTenses = getAvailableTenses(currentVerb);
 
         if (availableTenses.length === 0) {
-          showFeedback("No tenses available for this verb", "error");
+          showFeedback("No selected tenses available for this verb", "error");
           return;
         }
 
@@ -1643,6 +1728,12 @@
         currentAnswer =
           verbDatabase[currentVerb].conjugations[currentTense][currentPerson];
 
+        // Skip if answer is "-" (not applicable)
+        if (currentAnswer === "-") {
+          getNewVerb(); // Try again
+          return;
+        }
+
         // Reset attempts
         attempts = 0;
 
@@ -1658,23 +1749,9 @@
       }
 
       // Display the current challenge
-      // Display the current challenge
-      // Display the current challenge
       function displayChallenge() {
         const display = document.getElementById("conjugationDisplay");
         const verbData = verbDatabase[currentVerb];
-
-        // Check if this tense/person combination exists
-        const conjugation = verbData.conjugations[currentTense];
-        if (
-          !conjugation ||
-          !conjugation[currentPerson] ||
-          conjugation[currentPerson] === "-"
-        ) {
-          // Skip this combination and get a new one
-          getNewVerb();
-          return;
-        }
 
         display.innerHTML = `
     <div class="verb-prompt">
@@ -1685,11 +1762,13 @@
     <div style="font-size: 1.1em; color: #6c757d; margin-bottom: 15px;">
       ${verbData.translation}
     </div>
-    <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: none;">
+    <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: ${
+      settings.showRegularityHint ? "block" : "none"
+    };">
       ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
     </div>
     <div class="conjugation-prompt">
-      ${tenseNames[currentTense]} - ${persons[currentPerson]}
+      ${allTenses[currentTense]} - ${persons[currentPerson]}
     </div>
     <div class="answer-section">
       <input type="text" class="answer-input" id="answerInput" 
@@ -1698,26 +1777,11 @@
     <div class="controls" style="margin-top: 15px;">
       <button class="btn" onclick="checkAnswer()">Check Answer</button>
       <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
-      <button class="btn btn-secondary" onclick="toggleRegularityHint()">Show Hint</button>
     </div>
   `;
 
         // Focus on input
         document.getElementById("answerInput").focus();
-      }
-
-      // Toggle regularity hint visibility
-      function toggleRegularityHint() {
-        const hint = document.getElementById("regularityHint");
-        const button = event.target;
-
-        if (hint.style.display === "none") {
-          hint.style.display = "block";
-          button.textContent = "Hide Hint";
-        } else {
-          hint.style.display = "none";
-          button.textContent = "Show Hint";
-        }
       }
 
       // Handle Enter key press
@@ -1768,12 +1832,7 @@
 
         updateStatsDisplay();
 
-        showFeedback(`Correct! 🎉`, "success");
-
-        // Auto-advance after 2 seconds
-        setTimeout(() => {
-          getNewVerb();
-        }, 2000);
+        showFeedback(`Correct! 🎉 Click "New Verb" to continue.`, "success");
       }
 
       // Handle wrong answer
@@ -1802,7 +1861,7 @@
         updateStatsDisplay();
         updateRecentMistakes();
 
-        if (settings.allowMultipleAttempts && attempts < maxAttempts) {
+        if (attempts < maxAttempts) {
           showFeedback(
             `Not quite right. Try again! (Attempt ${attempts}/${maxAttempts})`,
             "error"
@@ -1816,15 +1875,10 @@
           }, 1500);
         } else {
           showFeedback(
-            `Incorrect. The answer is: <strong>${currentAnswer}</strong>`,
+            `Incorrect. The answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
             "error"
           );
           input.disabled = true;
-
-          // Auto-advance after 3 seconds
-          setTimeout(() => {
-            getNewVerb();
-          }, 3000);
         }
       }
 
@@ -1836,7 +1890,7 @@
         input.disabled = true;
 
         showFeedback(
-          `The correct answer is: <strong>${currentAnswer}</strong>`,
+          `The correct answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
           "info"
         );
 
@@ -1844,11 +1898,6 @@
         stats.total++;
         stats.currentStreak = 0;
         updateStatsDisplay();
-
-        // Auto-advance after 3 seconds
-        setTimeout(() => {
-          getNewVerb();
-        }, 3000);
       }
 
       // Show feedback message
@@ -1905,7 +1954,7 @@
           .map(
             (mistake) => `
           <div style="background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 3px solid #dc3545;">
-            <strong>${mistake.verb}</strong> (${tenseNames[mistake.tense]} - ${
+            <strong>${mistake.verb}</strong> (${allTenses[mistake.tense]} - ${
               persons[mistake.person]
             })<br>
             <span style="color: #dc3545;">Your answer: ${
@@ -1941,19 +1990,24 @@
 
       // Update settings
       function updateSettings() {
-        settings.verbLevel = document.getElementById("verbLevel").value;
-        settings.conjugationLevel =
-          document.getElementById("conjugationLevel").value;
+        const levelStart = document.getElementById("verbLevelStart").value;
+        const levelEnd = document.getElementById("verbLevelEnd").value;
+
+        // Ensure end level is not before start level
+        const levelOrder = ["beginner", "intermediate", "advanced"];
+        const startIndex = levelOrder.indexOf(levelStart);
+        const endIndex = levelOrder.indexOf(levelEnd);
+
+        if (endIndex < startIndex) {
+          document.getElementById("verbLevelEnd").value = levelStart;
+          settings.verbLevelEnd = levelStart;
+        } else {
+          settings.verbLevelEnd = levelEnd;
+        }
+
+        settings.verbLevelStart = levelStart;
         settings.showRegularityHint =
           document.getElementById("showRegularityHint").checked;
-        settings.allowMultipleAttempts = document.getElementById(
-          "allowMultipleAttempts"
-        ).checked;
-
-        // Update verb count display
-        const availableVerbs = getAvailableVerbs();
-        document.getElementById("verbCountDisplay").textContent =
-          availableVerbs.length;
 
         console.log("Settings updated:", settings);
       }
@@ -1978,6 +2032,7 @@
       // Initialize the app
       function initializeApp() {
         setupTabSwitching();
+        initializeTenseCheckboxes();
         updateSettings();
         updateStatsDisplay();
         updateRecentMistakes();
