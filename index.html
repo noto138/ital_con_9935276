@@ -490,28 +490,14 @@
               </div>
 
               <div class="tense-selection">
-                <label
-                  style="
-                    font-weight: 600;
-                    color: #495057;
-                    margin-bottom: 10px;
-                    display: block;
-                  "
-                  >Select Tenses to Practice:</label
-                >
+                <label style="font-weight: 600; color: #495057; margin-bottom: 10px; display: block;">Select Tenses to Practice:</label>
                 <div class="tense-checkboxes" id="tenseCheckboxes">
                   <!-- Checkboxes will be populated by JavaScript -->
                 </div>
                 <div class="select-buttons">
-                  <button class="btn-small" onclick="selectAllTenses()">
-                    Select All
-                  </button>
-                  <button class="btn-small" onclick="selectBasicTenses()">
-                    Basic Only
-                  </button>
-                  <button class="btn-small" onclick="clearAllTenses()">
-                    Clear All
-                  </button>
+                  <button class="btn-small" onclick="selectAllTenses()">Select All</button>
+                  <button class="btn-small" onclick="selectBasicTenses()">Basic Only</button>
+                  <button class="btn-small" onclick="clearAllTenses()">Clear All</button>
                 </div>
               </div>
             </div>
@@ -524,9 +510,7 @@
 
             <div class="controls">
               <button class="btn" onclick="getNewVerb()">New Verb</button>
-              <button class="btn btn-secondary" onclick="resetStats()">
-                Reset Stats
-              </button>
+              <button class="btn btn-secondary" onclick="resetStats()">Reset Stats</button>
             </div>
           </div>
         </div>
@@ -588,6 +572,7 @@
               <li>
                 💡 Regularity hints show if a verb follows regular patterns
               </li>
+              <li>📚 Rule explanations help you understand conjugation patterns</li>
               <li>📊 Track your accuracy and progress over time</li>
               <li>🎯 Choose specific tenses and difficulty levels</li>
               <li>🎚️ Use difficulty ranges from beginner to advanced</li>
@@ -617,6 +602,9 @@
                 Use the pronunciation feature to improve your spoken Italian
               </li>
               <li>
+                Click "Show Rule" to understand the conjugation patterns
+              </li>
+              <li>
                 Regular practice is more effective than long study sessions
               </li>
             </ul>
@@ -630,7 +618,7 @@
     </div>
 
     <script>
-      // Verb conjugation database - same as before
+      // Verb conjugation database
       const verbDatabase = {
         essere: {
           translation: "to be",
@@ -1508,6 +1496,367 @@
         imperativo_presente: "Imperativo",
       };
 
+      // Conjugation rules database
+      const conjugationRules = {
+        presente: {
+          regular_are: {
+            pattern: "Drop -are, add: -o, -i, -a, -iamo, -ate, -ano",
+            examples: [
+              "parlare → parlo, parli, parla, parliamo, parlate, parlano",
+            ],
+            note: "Most common and regular verb type in Italian",
+          },
+          regular_ere: {
+            pattern: "Drop -ere, add: -o, -i, -e, -iamo, -ete, -ono",
+            examples: [
+              "credere → credo, credi, crede, crediamo, credete, credono",
+            ],
+            note: "Generally regular, but watch for stress patterns",
+          },
+          regular_ire: {
+            pattern: "Drop -ire, add: -o, -i, -e, -iamo, -ite, -ono",
+            examples: [
+              "dormire → dormo, dormi, dorme, dormiamo, dormite, dormono",
+            ],
+            note: "Some -ire verbs add -isc- in singular and 3rd plural (finire → finisco)",
+          },
+          essere: {
+            pattern: "Completely irregular - must memorize",
+            note: "Forms: sono, sei, è, siamo, siete, sono. Most important verb in Italian.",
+            similar: "No similar verbs - unique ancient pattern",
+          },
+          avere: {
+            pattern: "Irregular stem changes and endings",
+            note: "Forms: ho, hai, ha, abbiamo, avete, hanno. Second most important verb.",
+            similar: "No similar verbs - unique pattern",
+          },
+          fare: {
+            pattern: "Irregular with Latin stem 'fac-' + modified endings",
+            note: "Forms: faccio, fai, fa, facciamo, fate, fanno. From Latin 'facere'.",
+            similar: "Similar irregularities to dire, dare (ancient verbs)",
+          },
+          dire: {
+            pattern: "Irregular with contracted stem 'dic-'",
+            note: "Forms: dico, dici, dice, diciamo, dite, dicono. From Latin 'dicere'.",
+            similar: "Similar to fare - ancient Latin verb with contractions",
+          },
+          andare: {
+            pattern: "Highly irregular with multiple stems",
+            note: "Forms: vado, vai, va, andiamo, andate, vanno. Uses 'vad-' and 'and-' stems.",
+            similar: "Unique pattern - no similar verbs",
+          },
+          stare: {
+            pattern: "Irregular, similar to dare",
+            note: "Forms: sto, stai, sta, stiamo, state, stanno. Used for location/temporary states.",
+            similar: "Similar pattern to dare",
+          },
+          venire: {
+            pattern: "Irregular with stem changes",
+            note: "Forms: vengo, vieni, viene, veniamo, venite, vengono. Note 'veng-' stem in 1st/3rd plural.",
+            similar: "Similar to tenere, rimanere (other -nire irregulars)",
+          },
+          dovere: {
+            pattern: "Modal verb - irregular endings",
+            note: "Forms: devo, devi, deve, dobbiamo, dovete, devono. Modal verb expressing necessity.",
+            similar: "Similar to other modals: potere, volere",
+          },
+          potere: {
+            pattern: "Modal verb - irregular with stem changes",
+            note: "Forms: posso, puoi, può, possiamo, potete, possono. Note double 's' in 1st person.",
+            similar: "Similar to other modals: dovere, volere",
+          },
+          volere: {
+            pattern: "Modal verb - highly irregular",
+            note: "Forms: voglio, vuoi, vuole, vogliamo, volete, vogliono. Multiple stem changes.",
+            similar: "Similar to other modals: dovere, potere",
+          },
+        },
+        imperfetto: {
+          regular_are: {
+            pattern: "Drop -are, add: -avo, -avi, -ava, -avamo, -avate, -avano",
+            examples: [
+              "parlare → parlavo, parlavi, parlava, parlavamo, parlavate, parlavano",
+            ],
+            note: "Very regular - same endings for all -are verbs",
+          },
+          regular_ere: {
+            pattern: "Drop -ere, add: -evo, -evi, -eva, -evamo, -evate, -evano",
+            examples: [
+              "credere → credevo, credevi, credeva, credevamo, credevate, credevano",
+            ],
+            note: "Very regular - same endings for all -ere verbs",
+          },
+          regular_ire: {
+            pattern: "Drop -ire, add: -ivo, -ivi, -iva, -ivamo, -ivate, -ivano",
+            examples: [
+              "dormire → dormivo, dormivi, dormiva, dormivamo, dormivate, dormivano",
+            ],
+            note: "Very regular - same endings for all -ire verbs",
+          },
+          essere: {
+            pattern: "Uses stem 'er-' + regular endings",
+            note: "Forms: ero, eri, era, eravamo, eravate, erano. One of few irregular imperfects.",
+            similar: "Unique among irregular verbs for having irregular imperfetto",
+          },
+          fare: {
+            pattern: "Uses original Latin stem 'face-' + regular endings",
+            note: "Forms: facevo, facevi, faceva, facevamo, facevate, facevano. Regular once you know the stem.",
+            similar: "Similar to dire, bere (other Latin-stem verbs)",
+          },
+          dire: {
+            pattern: "Uses original Latin stem 'dice-' + regular endings",
+            note: "Forms: dicevo, dicevi, diceva, dicevamo, dicevate, dicevano. Regular with Latin stem.",
+            similar: "Similar to fare, bere (other Latin-stem verbs)",
+          },
+        },
+        passato_prossimo: {
+          regular_are: {
+            pattern: "Past participle: drop -are, add -ato. Usually with avere.",
+            examples: ["parlare → ho parlato", "mangiare → ho mangiato"],
+            note: "Most -are verbs use 'avere', except movement verbs like 'andare → sono andato/a'",
+          },
+          regular_ere: {
+            pattern: "Past participle: drop -ere, add -uto. Usually with avere.",
+            examples: ["credere → ho creduto", "vendere → ho venduto"],
+            note: "Some -ere verbs have irregular past participles (vedere → visto)",
+          },
+          regular_ire: {
+            pattern: "Past participle: drop -ire, add -ito. Usually with avere.",
+            examples: ["dormire → ho dormito", "finire → ho finito"],
+            note: "Most -ire verbs use 'avere', except movement/change verbs",
+          },
+          essere: {
+            pattern: "Irregular past participle 'stato/a' + essere auxiliary",
+            note: "Forms: sono stato/a, sei stato/a, etc. Always uses essere + agreement.",
+            similar: "Stare has same past participle: stato",
+          },
+          avere: {
+            pattern: "Past participle 'avuto' + avere auxiliary",
+            note: "Forms: ho avuto, hai avuto, etc. Uses itself as auxiliary.",
+            similar: "Regular -uto ending despite irregular present",
+          },
+          fare: {
+            pattern: "Irregular past participle 'fatto' + avere",
+            note: "Forms: ho fatto, hai fatto, etc. Completely irregular participle.",
+            similar: "Other irregular participles: dire→detto, venire→venuto",
+          },
+          dire: {
+            pattern: "Irregular past participle 'detto' + avere",
+            note: "Forms: ho detto, hai detto, etc. Irregular but consistent.",
+            similar: "Other irregular participles: fare→fatto, venire→venuto",
+          },
+          andare: {
+            pattern: "Past participle 'andato/a' + essere auxiliary",
+            note: "Forms: sono andato/a, sei andato/a, etc. Movement verb = essere + agreement.",
+            similar: "Other movement verbs: venire→venuto, arrivare→arrivato",
+          },
+          stare: {
+            pattern: "Past participle 'stato/a' + essere auxiliary",
+            note: "Forms: sono stato/a, sei stato/a, etc. Same participle as essere.",
+            similar: "Essere also uses 'stato/a'",
+          },
+          venire: {
+            pattern: "Irregular past participle 'venuto/a' + essere",
+            note: "Forms: sono venuto/a, sei venuto/a, etc. Movement verb = essere + agreement.",
+            similar: "Other movement verbs: andare→andato, arrivare→arrivato",
+          },
+        },
+        futuro_semplice: {
+          regular_are: {
+            pattern: "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
+            examples: [
+              "parlare → parlerò, parlerai, parlerà, parleremo, parlerete, parleranno",
+            ],
+            note: "All regular - just remove final -e and add future endings",
+          },
+          regular_ere: {
+            pattern: "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
+            examples: [
+              "credere → crederò, crederai, crederà, crederemo, crederete, crederanno",
+            ],
+            note: "Same pattern as -are verbs - very regular",
+          },
+          regular_ire: {
+            pattern: "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
+            examples: [
+              "dormire → dormirò, dormirai, dormirà, dormiremo, dormirete, dormiranno",
+            ],
+            note: "Same pattern as other verbs - very regular",
+          },
+          essere: {
+            pattern: "Irregular stem 'sar-' + regular future endings",
+            note: "Forms: sarò, sarai, sarà, saremo, sarete, saranno. Irregular stem but regular endings.",
+            similar: "Unique irregular future stem",
+          },
+          avere: {
+            pattern: "Irregular stem 'avr-' + regular future endings",
+            note: "Forms: avrò, avrai, avrà, avremo, avrete, avranno. Contracted stem.",
+            similar: "Similar contraction to dovere, potere, volere",
+          },
+          fare: {
+            pattern: "Irregular stem 'far-' + regular future endings",
+            note: "Forms: farò, farai, farà, faremo, farete, faranno. Simple stem + regular endings.",
+            similar: "Similar to dire→dirò, dare→darò",
+          },
+          dire: {
+            pattern: "Irregular stem 'dir-' + regular future endings",
+            note: "Forms: dirò, dirai, dirà, diremo, direte, diranno. Simple contraction.",
+            similar: "Similar to fare→farò, dare→darò",
+          },
+          andare: {
+            pattern: "Irregular stem 'andr-' + regular future endings",
+            note: "Forms: andrò, andrai, andrà, andremo, andrete, andranno. Logical stem change.",
+            similar: "Similar predictable stem change",
+          },
+          venire: {
+            pattern: "Irregular stem 'verr-' + regular future endings",
+            note: "Forms: verrò, verrai, verrà, verremo, verrete, verranno. Double 'r' stem.",
+            similar: "Similar to volere→vorrò, potere→potrò",
+          },
+          dovere: {
+            pattern: "Irregular stem 'dovr-' + regular future endings",
+            note: "Forms: dovrò, dovrai, dovrà, dovremo, dovrete, dovranno. Contracted stem.",
+            similar: "Similar to avere→avrò, potere→potrò, volere→vorrò",
+          },
+          potere: {
+            pattern: "Irregular stem 'potr-' + regular future endings",
+            note: "Forms: potrò, potrai, potrà, potremo, potrete, potranno. Contracted stem.",
+            similar: "Similar to dovere→dovrò, volere→vorrò",
+          },
+          volere: {
+            pattern: "Irregular stem 'vorr-' + regular future endings",
+            note: "Forms: vorrò, vorrai, vorrà, vorremo, vorrete, vorranno. Double 'r' stem.",
+            similar: "Similar to venire→verrò, potere→potrò",
+          },
+        },
+        condizionale_presente: {
+          regular_all: {
+            pattern: "Use future stem + conditional endings: -ei, -esti, -ebbe, -emmo, -este, -ebbero",
+            examples: [
+              "parlare → parlerei",
+              "credere → crederei",
+              "dormire → dormirei",
+            ],
+            note: "Always uses the same stem as future tense - very predictable",
+          },
+          essere: {
+            pattern: "Future stem 'sar-' + conditional endings",
+            note: "Forms: sarei, saresti, sarebbe, saremmo, sareste, sarebbero. Same stem as future.",
+            similar: "All verbs use their future stem for conditional",
+          },
+        },
+        congiuntivo_presente: {
+          regular_are: {
+            pattern: "Drop -are, add: -i, -i, -i, -iamo, -iate, -ino",
+            examples: [
+              "parlare → parli, parli, parli, parliamo, parliate, parlino",
+            ],
+            note: "Note: first 3 persons are identical! Context determines meaning.",
+          },
+          regular_ere: {
+            pattern: "Drop -ere, add: -a, -a, -a, -iamo, -iate, -ano",
+            examples: [
+              "credere → creda, creda, creda, crediamo, crediate, credano",
+            ],
+            note: "First 3 persons identical. Different vowel pattern than -are verbs.",
+          },
+          regular_ire: {
+            pattern: "Drop -ire, add: -a, -a, -a, -iamo, -iate, -ano",
+            examples: [
+              "dormire → dorma, dorma, dorma, dormiamo, dormiate, dormano",
+            ],
+            note: "Same pattern as -ere verbs. -isc- verbs add it: finisca, finisca, finisca...",
+          },
+          essere: {
+            pattern: "Completely irregular - must memorize",
+            note: "Forms: sia, sia, sia, siamo, siate, siano. Unique irregular pattern.",
+            similar: "No similar verbs",
+          },
+          avere: {
+            pattern: "Irregular stem 'abbi-' for singular/3rd plural",
+            note: "Forms: abbia, abbia, abbia, abbiamo, abbiate, abbiano. Mixed regular/irregular.",
+            similar: "Unique pattern",
+          },
+          fare: {
+            pattern: "Uses stem 'facc-' + modified endings",
+            note: "Forms: faccia, faccia, faccia, facciamo, facciate, facciano. Logical but irregular.",
+            similar: "Similar logic to dire→dica",
+          },
+          dire: {
+            pattern: "Uses stem 'dic-' + modified endings",
+            note: "Forms: dica, dica, dica, diciamo, diciate, dicano. Follows present stem logic.",
+            similar: "Similar to fare→faccia",
+          },
+          andare: {
+            pattern: "Uses present stems 'vad-' and 'and-'",
+            note: "Forms: vada, vada, vada, andiamo, andiate, vadano. Follows present tense stems.",
+            similar: "Unique stem pattern",
+          },
+        },
+        congiuntivo_imperfetto: {
+          regular_all: {
+            pattern: "Complex but regular: infinitive stem + -ssi, -ssi, -sse, -ssimo, -ste, -ssero",
+            examples: [
+              "parlare → parlassi",
+              "credere → credessi",
+              "dormire → dormissi",
+            ],
+            note: "One of the most challenging tenses - but completely regular once you learn the pattern. All verbs follow this rule!",
+          },
+          essere: {
+            pattern: "Uses stem 'fos-' + regular congiuntivo imperfetto endings",
+            note: "Forms: fossi, fossi, fosse, fossimo, foste, fossero. Only irregular congiuntivo imperfetto.",
+            similar: "Unique - all other verbs are regular in this tense",
+          },
+          irregular_note: {
+            pattern: "Good news: except for 'essere', ALL verbs are regular in congiuntivo imperfetto!",
+            note: "Even highly irregular verbs like fare, andare, venire follow the standard pattern.",
+            examples: [
+              "fare → facessi",
+              "andare → andassi",
+              "venire → venissi",
+            ],
+          },
+        },
+        imperativo_presente: {
+          regular_are: {
+            pattern: "tu: drop -are, add -a | lei: congiuntivo form | voi: drop -e from infinitive",
+            examples: ["parlare → parla (tu), parli (lei), parlate (voi)"],
+            note: "Informal (tu/voi) vs formal (lei) forms. Noi form = congiuntivo.",
+          },
+          regular_ere: {
+            pattern: "tu: drop -ere, add -i | lei: congiuntivo form | voi: drop -e from infinitive",
+            examples: ["credere → credi (tu), creda (lei), credete (voi)"],
+            note: "Similar pattern to -are but different tu ending",
+          },
+          regular_ire: {
+            pattern: "tu: drop -ire, add -i | lei: congiuntivo form | voi: drop -e from infinitive",
+            examples: ["dormire → dormi (tu), dorma (lei), dormite (voi)"],
+            note: "Same as -ere verbs for tu form",
+          },
+          essere: {
+            pattern: "Irregular imperative forms",
+            note: "Forms: sii (tu), sia (lei), siamo (noi), siate (voi), siano (loro). Mixed patterns.",
+            similar: "Unique irregular",
+          },
+          fare: {
+            pattern: "Irregular with contractions",
+            note: "Forms: fa' (tu), faccia (lei), facciamo (noi), fate (voi). Note apostrophe in fa'.",
+            similar: "Similar contractions to dire→di', dare→da'",
+          },
+          dire: {
+            pattern: "Irregular with contractions",
+            note: "Forms: di' (tu), dica (lei), diciamo (noi), dite (voi). Note apostrophe in di'.",
+            similar: "Similar to fare→fa', dare→da'",
+          },
+          andare: {
+            pattern: "Irregular with contractions",
+            note: "Forms: va' (tu), vada (lei), andiamo (noi), andate (voi). Note apostrophe in va'.",
+            similar: "Similar contraction pattern to fare, dire",
+          },
+        },
+      };
+
       const basicTenses = [
         "presente",
         "passato_prossimo",
@@ -1669,6 +2018,90 @@
         updateSelectedTenses();
       }
 
+      // Toggle regularity hint visibility
+      function toggleRegularityHint() {
+        const hint = document.getElementById("regularityHint");
+        const button = event.target;
+
+        if (hint.style.display === "none") {
+          hint.style.display = "block";
+          button.textContent = "Hide Hint";
+        } else {
+          hint.style.display = "none";
+          button.textContent = "Show Hint";
+        }
+      }
+
+      // Get conjugation rule for current verb and tense
+      function getConjugationRule(verb, tense) {
+        const rules = conjugationRules[tense];
+        if (!rules) {
+          return {
+            pattern: "Rules not available for this tense",
+            note: "This tense may not be fully supported yet"
+          };
+        }
+
+        // Check for verb-specific rule first
+        if (rules[verb]) {
+          return rules[verb];
+        }
+
+        // Check for regular patterns based on verb ending
+        if (verb.endsWith('are') && rules.regular_are) {
+          return rules.regular_are;
+        }
+        if (verb.endsWith('ere') && rules.regular_ere) {
+          return rules.regular_ere;
+        }
+        if (verb.endsWith('ire') && rules.regular_ire) {
+          return rules.regular_ire;
+        }
+
+        // Check for general regular pattern
+        if (rules.regular_all) {
+          return rules.regular_all;
+        }
+
+        // Fallback
+        return {
+          pattern: "Pattern not available for this verb",
+          note: "This verb may follow an uncommon irregular pattern"
+        };
+      }
+
+      // Toggle conjugation rule visibility
+      function toggleConjugationRule() {
+        const ruleDiv = document.getElementById("conjugationRule");
+        const button = event.target;
+
+        if (ruleDiv.style.display === "none") {
+          const rule = getConjugationRule(currentVerb, currentTense);
+          
+          let ruleHtml = `<div style="font-weight: 600; color: #495057; margin-bottom: 8px;">📚 Conjugation Rule:</div>`;
+          ruleHtml += `<div style="font-weight: 500; color: #6c757d; margin-bottom: 6px;">${rule.pattern}</div>`;
+          
+          if (rule.examples) {
+            ruleHtml += `<div style="font-size: 0.85em; color: #6c757d; margin-bottom: 6px;"><strong>Examples:</strong> ${rule.examples.join('; ')}</div>`;
+          }
+          
+          if (rule.note) {
+            ruleHtml += `<div style="font-size: 0.85em; color: #495057; margin-bottom: 6px;"><strong>Note:</strong> ${rule.note}</div>`;
+          }
+          
+          if (rule.similar) {
+            ruleHtml += `<div style="font-size: 0.85em; color: #6c757d;"><strong>Similar verbs:</strong> ${rule.similar}</div>`;
+          }
+
+          ruleDiv.innerHTML = ruleHtml;
+          ruleDiv.style.display = "block";
+          button.textContent = "Hide Rule";
+        } else {
+          ruleDiv.style.display = "none";
+          button.textContent = "Show Rule";
+        }
+      }
+
       // Get new random verb conjugation challenge
       function getNewVerb() {
         if (settings.selectedTenses.length === 0) {
@@ -1739,30 +2172,34 @@
         const verbData = verbDatabase[currentVerb];
 
         display.innerHTML = `
-    <div class="verb-prompt">
-      ${currentVerb}
-      <span class="speaker-icon" onclick="pronounceWord('${currentVerb}')" title="Pronounce verb">🔊</span>
-      <span class="dict-icon" onclick="openConjugation('${currentVerb}')" title="View full conjugation">📖</span>
-    </div>
-    <div style="font-size: 1.1em; color: #6c757d; margin-bottom: 15px;">
-      ${verbData.translation}
-    </div>
-    <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: none;">
-  ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
-</div>
-    <div class="conjugation-prompt">
-      ${allTenses[currentTense]} - ${persons[currentPerson]}
-    </div>
-    <div class="answer-section">
-      <input type="text" class="answer-input" id="answerInput" 
-             placeholder="Type your answer..." onkeypress="handleKeyPress(event)">
-    </div>
-    <div class="controls" style="margin-top: 15px;">
-  <button class="btn" onclick="checkAnswer()">Check Answer</button>
-  <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
-  <button class="btn btn-secondary" onclick="toggleRegularityHint()">Show Hint</button>
-</div>
-  `;
+          <div class="verb-prompt">
+            ${currentVerb}
+            <span class="speaker-icon" onclick="pronounceWord('${currentVerb}')" title="Pronounce verb">🔊</span>
+            <span class="dict-icon" onclick="openConjugation('${currentVerb}')" title="View full conjugation">📖</span>
+          </div>
+          <div style="font-size: 1.1em; color: #6c757d; margin-bottom: 15px;">
+            ${verbData.translation}
+          </div>
+          <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: none;">
+            ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
+          </div>
+          <div id="conjugationRule" style="font-size: 0.9em; background: #e8f4f8; color: #495057; margin-bottom: 15px; padding: 12px; border-radius: 8px; border-left: 4px solid #17a2b8; display: none;">
+            <!-- Rule content will be populated by toggleConjugationRule() -->
+          </div>
+          <div class="conjugation-prompt">
+            ${allTenses[currentTense]} - ${persons[currentPerson]}
+          </div>
+          <div class="answer-section">
+            <input type="text" class="answer-input" id="answerInput" 
+                   placeholder="Type your answer..." onkeypress="handleKeyPress(event)">
+          </div>
+          <div class="controls" style="margin-top: 15px;">
+            <button class="btn" onclick="checkAnswer()">Check Answer</button>
+            <button class="btn btn-warning" onclick="showCorrectAnswer()">Show Answer</button>
+            <button class="btn btn-secondary" onclick="toggleRegularityHint()">Show Hint</button>
+            <button class="btn btn-secondary" onclick="toggleConjugationRule()">Show Rule</button>
+          </div>
+        `;
 
         // Focus on input
         document.getElementById("answerInput").focus();
@@ -1884,20 +2321,6 @@
         updateStatsDisplay();
       }
 
-      // Toggle regularity hint visibility
-      function toggleRegularityHint() {
-        const hint = document.getElementById("regularityHint");
-        const button = event.target;
-
-        if (hint.style.display === "none") {
-          hint.style.display = "block";
-          button.textContent = "Hide Hint";
-        } else {
-          hint.style.display = "none";
-          button.textContent = "Show Hint";
-        }
-      }
-
       // Show feedback message
       function showFeedback(message, type) {
         const feedback = document.querySelector(".feedback-section");
@@ -1951,18 +2374,18 @@
         const mistakesHtml = stats.recentMistakes
           .map(
             (mistake) => `
-          <div style="background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 3px solid #dc3545;">
-            <strong>${mistake.verb}</strong> (${allTenses[mistake.tense]} - ${
+            <div style="background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 3px solid #dc3545;">
+              <strong>${mistake.verb}</strong> (${allTenses[mistake.tense]} - ${
               persons[mistake.person]
             })<br>
-            <span style="color: #dc3545;">Your answer: ${
-              mistake.userAnswer
-            }</span><br>
-            <span style="color: #28a745;">Correct: ${
-              mistake.correctAnswer
-            }</span>
-          </div>
-        `
+              <span style="color: #dc3545;">Your answer: ${
+                mistake.userAnswer
+              }</span><br>
+              <span style="color: #28a745;">Correct: ${
+                mistake.correctAnswer
+              }</span>
+            </div>
+          `
           )
           .join("");
 
