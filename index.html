@@ -2288,37 +2288,49 @@
       }
 
       // Generate all valid gender/number variations
+      // Generate all valid gender/number variations
       function generateGenderNumberVariations(correctAnswer) {
-        const variations = [];
+        const variations = [correctAnswer]; // Include the original
 
         // Handle patterns like "sono stati/e", "sei andato/a", etc.
         if (correctAnswer.includes("/")) {
-          // Extract the base and the variable part
-          const parts = correctAnswer.split(" ");
-          const variableParts = [];
-          const fixedParts = [];
+          const words = correctAnswer.split(" ");
 
-          parts.forEach((part, index) => {
-            if (part.includes("/")) {
-              variableParts.push({ index, part });
-              fixedParts.push("VARIABLE");
-            } else {
-              fixedParts.push(part);
+          // Find all possible combinations
+          const generateCombinations = (
+            wordArray,
+            currentIndex = 0,
+            currentCombination = []
+          ) => {
+            if (currentIndex === wordArray.length) {
+              variations.push(currentCombination.join(" "));
+              return;
             }
-          });
 
-          // Generate combinations
-          variableParts.forEach(({ index, part }) => {
-            const options = part.split("/");
-            options.forEach((option) => {
-              const newParts = [...fixedParts];
-              newParts[index] = option;
-              variations.push(newParts.join(" "));
-            });
-          });
+            const word = wordArray[currentIndex];
+            if (word.includes("/")) {
+              // Split the word and try each option
+              const options = word.split("/");
+              options.forEach((option) => {
+                generateCombinations(wordArray, currentIndex + 1, [
+                  ...currentCombination,
+                  option,
+                ]);
+              });
+            } else {
+              // Regular word, just add it
+              generateCombinations(wordArray, currentIndex + 1, [
+                ...currentCombination,
+                word,
+              ]);
+            }
+          };
+
+          generateCombinations(words);
         }
 
-        return variations;
+        // Remove duplicates and return
+        return [...new Set(variations)];
       }
 
       // Handle correct answer
