@@ -641,6 +641,7 @@
         parlare: {
           translation: "to speak",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -727,6 +728,7 @@
         mangiare: {
           translation: "to eat",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -813,6 +815,7 @@
         studiare: {
           translation: "to study",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -899,6 +902,7 @@
         lavorare: {
           translation: "to work",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -985,6 +989,7 @@
         camminare: {
           translation: "to walk",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -1071,6 +1076,7 @@
         vendere: {
           translation: "to sell",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -1157,6 +1163,7 @@
         ricevere: {
           translation: "to receive",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "intermediate",
           conjugations: {
             presente: {
@@ -1243,6 +1250,7 @@
         ripetere: {
           translation: "to repeat",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "intermediate",
           conjugations: {
             presente: {
@@ -1329,6 +1337,7 @@
         aprire: {
           translation: "to open",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -1415,6 +1424,7 @@
         sentire: {
           translation: "to hear/feel",
           regular: "regular",
+          auxiliary: "avere",
           difficulty: "intermediate",
           conjugations: {
             presente: {
@@ -1503,6 +1513,7 @@
         bere: {
           translation: "to drink",
           regular: "mostly_regular",
+          auxiliary: "avere",
           difficulty: "intermediate",
           conjugations: {
             presente: {
@@ -1589,6 +1600,7 @@
         uscire: {
           translation: "to go out",
           regular: "mostly_regular",
+          auxiliary: "essere",
           difficulty: "intermediate",
           conjugations: {
             presente: {
@@ -1675,6 +1687,7 @@
         tenere: {
           translation: "to hold/keep",
           regular: "mostly_regular",
+          auxiliary: "avere",
           difficulty: "intermediate",
           conjugations: {
             presente: {
@@ -1761,6 +1774,7 @@
         rimanere: {
           translation: "to remain/stay",
           regular: "mostly_regular",
+          auxiliary: "essere",
           difficulty: "advanced",
           conjugations: {
             presente: {
@@ -1847,6 +1861,7 @@
         porre: {
           translation: "to put/place",
           regular: "mostly_regular",
+          auxiliary: "avere",
           difficulty: "advanced",
           conjugations: {
             presente: {
@@ -1935,6 +1950,7 @@
         essere: {
           translation: "to be",
           regular: "irregular",
+          auxiliary: "essere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2021,6 +2037,7 @@
         avere: {
           translation: "to have",
           regular: "irregular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2107,6 +2124,7 @@
         fare: {
           translation: "to do/make",
           regular: "mostly_regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2193,6 +2211,7 @@
         dire: {
           translation: "to say/tell",
           regular: "mostly_regular",
+          auxiliary: "avere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2279,6 +2298,7 @@
         andare: {
           translation: "to go",
           regular: "irregular",
+          auxiliary: "essere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2365,6 +2385,7 @@
         stare: {
           translation: "to stay/be",
           regular: "irregular",
+          auxiliary: "essere",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2451,6 +2472,7 @@
         venire: {
           translation: "to come",
           regular: "irregular",
+          auxiliary: "essere",
           difficulty: "intermediate",
           conjugations: {
             presente: {
@@ -2537,6 +2559,7 @@
         dovere: {
           translation: "to have to/must",
           regular: "irregular",
+          auxiliary: "avere*",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2623,6 +2646,7 @@
         potere: {
           translation: "to be able/can",
           regular: "irregular",
+          auxiliary: "avere*",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -2709,6 +2733,7 @@
         volere: {
           translation: "to want",
           regular: "irregular",
+          auxiliary: "avere*",
           difficulty: "beginner",
           conjugations: {
             presente: {
@@ -3258,6 +3283,34 @@
           .trim();
       }
 
+      // Get regularity and auxiliary hint text
+      function getRegularityHint(verbData) {
+        let regularityText = "";
+        let auxiliaryText = "";
+
+        // Regularity hint
+        if (verbData.regular === "regular") {
+          regularityText = "✅ Regular verb";
+        } else if (verbData.regular === "mostly_regular") {
+          regularityText = "🟡 Mostly regular verb";
+        } else {
+          regularityText = "⚠️ Irregular verb";
+        }
+
+        // Auxiliary hint
+        if (verbData.auxiliary) {
+          if (verbData.auxiliary.includes("*")) {
+            const baseAux = verbData.auxiliary.replace("*", "");
+            auxiliaryText = `Usually uses '${baseAux}' in passato prossimo (can vary by usage)`;
+          } else {
+            auxiliaryText = `Uses '${verbData.auxiliary}' in passato prossimo`;
+          }
+        }
+
+        // Combine both hints
+        return regularityText + (auxiliaryText ? "<br>" + auxiliaryText : "");
+      }
+
       // Get available verbs based on current difficulty range
       function getAvailableVerbs() {
         const levelOrder = ["beginner", "intermediate", "advanced"];
@@ -3509,7 +3562,7 @@
             ${verbData.translation}
           </div>
           <div id="regularityHint" style="font-size: 0.9em; color: #6c757d; margin-bottom: 15px; display: none;">
-            ${verbData.regular ? "✓ Regular verb" : "⚠️ Irregular verb"}
+            ${getRegularityHint(verbData)}
           </div>
           <div id="conjugationRule" style="font-size: 0.9em; background: #e8f4f8; color: #495057; margin-bottom: 15px; padding: 12px; border-radius: 8px; border-left: 4px solid #17a2b8; display: none;">
             <!-- Rule content will be populated by toggleConjugationRule() -->
