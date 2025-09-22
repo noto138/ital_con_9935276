@@ -3698,6 +3698,7 @@
       }
 
       // Handle correct answer
+      // Handle correct answer
       function handleCorrectAnswer() {
         const input = document.getElementById("answerInput");
         input.className = "answer-input correct";
@@ -3714,7 +3715,21 @@
 
         updateStatsDisplay();
 
-        showFeedback(`Correct! 🎉 Click "New Verb" to continue.`, "success");
+        // Build attempts display if there were previous attempts
+        let attemptsText = "";
+        if (currentVerbAttempts.length > 1) {
+          // More than 1 means there were wrong attempts before the correct one
+          const wrongAttempts = currentVerbAttempts.slice(0, -1); // All but the last (correct) attempt
+          attemptsText =
+            wrongAttempts
+              .map((attempt, index) => `Your answer #${index + 1}: ${attempt}`)
+              .join("<br>") + "<br><br>";
+        }
+
+        showFeedback(
+          `${attemptsText}Correct! 🎉 Click "New Verb" to continue.`,
+          "success"
+        );
       }
 
       // Handle wrong answer
