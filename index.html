@@ -490,14 +490,28 @@
               </div>
 
               <div class="tense-selection">
-                <label style="font-weight: 600; color: #495057; margin-bottom: 10px; display: block;">Select Tenses to Practice:</label>
+                <label
+                  style="
+                    font-weight: 600;
+                    color: #495057;
+                    margin-bottom: 10px;
+                    display: block;
+                  "
+                  >Select Tenses to Practice:</label
+                >
                 <div class="tense-checkboxes" id="tenseCheckboxes">
                   <!-- Checkboxes will be populated by JavaScript -->
                 </div>
                 <div class="select-buttons">
-                  <button class="btn-small" onclick="selectAllTenses()">Select All</button>
-                  <button class="btn-small" onclick="selectBasicTenses()">Basic Only</button>
-                  <button class="btn-small" onclick="clearAllTenses()">Clear All</button>
+                  <button class="btn-small" onclick="selectAllTenses()">
+                    Select All
+                  </button>
+                  <button class="btn-small" onclick="selectBasicTenses()">
+                    Basic Only
+                  </button>
+                  <button class="btn-small" onclick="clearAllTenses()">
+                    Clear All
+                  </button>
                 </div>
               </div>
             </div>
@@ -510,7 +524,9 @@
 
             <div class="controls">
               <button class="btn" onclick="getNewVerb()">New Verb</button>
-              <button class="btn btn-secondary" onclick="resetStats()">Reset Stats</button>
+              <button class="btn btn-secondary" onclick="resetStats()">
+                Reset Stats
+              </button>
             </div>
           </div>
         </div>
@@ -572,7 +588,9 @@
               <li>
                 💡 Regularity hints show if a verb follows regular patterns
               </li>
-              <li>📚 Rule explanations help you understand conjugation patterns</li>
+              <li>
+                📚 Rule explanations help you understand conjugation patterns
+              </li>
               <li>📊 Track your accuracy and progress over time</li>
               <li>🎯 Choose specific tenses and difficulty levels</li>
               <li>🎚️ Use difficulty ranges from beginner to advanced</li>
@@ -601,9 +619,7 @@
               <li>
                 Use the pronunciation feature to improve your spoken Italian
               </li>
-              <li>
-                Click "Show Rule" to understand the conjugation patterns
-              </li>
+              <li>Click "Show Rule" to understand the conjugation patterns</li>
               <li>
                 Regular practice is more effective than long study sessions
               </li>
@@ -1596,7 +1612,8 @@
           essere: {
             pattern: "Uses stem 'er-' + regular endings",
             note: "Forms: ero, eri, era, eravamo, eravate, erano. One of few irregular imperfects.",
-            similar: "Unique among irregular verbs for having irregular imperfetto",
+            similar:
+              "Unique among irregular verbs for having irregular imperfetto",
           },
           fare: {
             pattern: "Uses original Latin stem 'face-' + regular endings",
@@ -1611,17 +1628,20 @@
         },
         passato_prossimo: {
           regular_are: {
-            pattern: "Past participle: drop -are, add -ato. Usually with avere.",
+            pattern:
+              "Past participle: drop -are, add -ato. Usually with avere.",
             examples: ["parlare → ho parlato", "mangiare → ho mangiato"],
             note: "Most -are verbs use 'avere', except movement verbs like 'andare → sono andato/a'",
           },
           regular_ere: {
-            pattern: "Past participle: drop -ere, add -uto. Usually with avere.",
+            pattern:
+              "Past participle: drop -ere, add -uto. Usually with avere.",
             examples: ["credere → ho creduto", "vendere → ho venduto"],
             note: "Some -ere verbs have irregular past participles (vedere → visto)",
           },
           regular_ire: {
-            pattern: "Past participle: drop -ire, add -ito. Usually with avere.",
+            pattern:
+              "Past participle: drop -ire, add -ito. Usually with avere.",
             examples: ["dormire → ho dormito", "finire → ho finito"],
             note: "Most -ire verbs use 'avere', except movement/change verbs",
           },
@@ -1663,21 +1683,24 @@
         },
         futuro_semplice: {
           regular_are: {
-            pattern: "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
+            pattern:
+              "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
             examples: [
               "parlare → parlerò, parlerai, parlerà, parleremo, parlerete, parleranno",
             ],
             note: "All regular - just remove final -e and add future endings",
           },
           regular_ere: {
-            pattern: "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
+            pattern:
+              "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
             examples: [
               "credere → crederò, crederai, crederà, crederemo, crederete, crederanno",
             ],
             note: "Same pattern as -are verbs - very regular",
           },
           regular_ire: {
-            pattern: "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
+            pattern:
+              "Drop -e from infinitive, add: -ò, -ai, -à, -emo, -ete, -anno",
             examples: [
               "dormire → dormirò, dormirai, dormirà, dormiremo, dormirete, dormiranno",
             ],
@@ -1731,7 +1754,8 @@
         },
         condizionale_presente: {
           regular_all: {
-            pattern: "Use future stem + conditional endings: -ei, -esti, -ebbe, -emmo, -este, -ebbero",
+            pattern:
+              "Use future stem + conditional endings: -ei, -esti, -ebbe, -emmo, -este, -ebbero",
             examples: [
               "parlare → parlerei",
               "credere → crederei",
@@ -1795,7 +1819,8 @@
         },
         congiuntivo_imperfetto: {
           regular_all: {
-            pattern: "Complex but regular: infinitive stem + -ssi, -ssi, -sse, -ssimo, -ste, -ssero",
+            pattern:
+              "Complex but regular: infinitive stem + -ssi, -ssi, -sse, -ssimo, -ste, -ssero",
             examples: [
               "parlare → parlassi",
               "credere → credessi",
@@ -1804,12 +1829,14 @@
             note: "One of the most challenging tenses - but completely regular once you learn the pattern. All verbs follow this rule!",
           },
           essere: {
-            pattern: "Uses stem 'fos-' + regular congiuntivo imperfetto endings",
+            pattern:
+              "Uses stem 'fos-' + regular congiuntivo imperfetto endings",
             note: "Forms: fossi, fossi, fosse, fossimo, foste, fossero. Only irregular congiuntivo imperfetto.",
             similar: "Unique - all other verbs are regular in this tense",
           },
           irregular_note: {
-            pattern: "Good news: except for 'essere', ALL verbs are regular in congiuntivo imperfetto!",
+            pattern:
+              "Good news: except for 'essere', ALL verbs are regular in congiuntivo imperfetto!",
             note: "Even highly irregular verbs like fare, andare, venire follow the standard pattern.",
             examples: [
               "fare → facessi",
@@ -1820,17 +1847,20 @@
         },
         imperativo_presente: {
           regular_are: {
-            pattern: "tu: drop -are, add -a | lei: congiuntivo form | voi: drop -e from infinitive",
+            pattern:
+              "tu: drop -are, add -a | lei: congiuntivo form | voi: drop -e from infinitive",
             examples: ["parlare → parla (tu), parli (lei), parlate (voi)"],
             note: "Informal (tu/voi) vs formal (lei) forms. Noi form = congiuntivo.",
           },
           regular_ere: {
-            pattern: "tu: drop -ere, add -i | lei: congiuntivo form | voi: drop -e from infinitive",
+            pattern:
+              "tu: drop -ere, add -i | lei: congiuntivo form | voi: drop -e from infinitive",
             examples: ["credere → credi (tu), creda (lei), credete (voi)"],
             note: "Similar pattern to -are but different tu ending",
           },
           regular_ire: {
-            pattern: "tu: drop -ire, add -i | lei: congiuntivo form | voi: drop -e from infinitive",
+            pattern:
+              "tu: drop -ire, add -i | lei: congiuntivo form | voi: drop -e from infinitive",
             examples: ["dormire → dormi (tu), dorma (lei), dormite (voi)"],
             note: "Same as -ere verbs for tu form",
           },
@@ -2038,7 +2068,7 @@
         if (!rules) {
           return {
             pattern: "Rules not available for this tense",
-            note: "This tense may not be fully supported yet"
+            note: "This tense may not be fully supported yet",
           };
         }
 
@@ -2048,13 +2078,13 @@
         }
 
         // Check for regular patterns based on verb ending
-        if (verb.endsWith('are') && rules.regular_are) {
+        if (verb.endsWith("are") && rules.regular_are) {
           return rules.regular_are;
         }
-        if (verb.endsWith('ere') && rules.regular_ere) {
+        if (verb.endsWith("ere") && rules.regular_ere) {
           return rules.regular_ere;
         }
-        if (verb.endsWith('ire') && rules.regular_ire) {
+        if (verb.endsWith("ire") && rules.regular_ire) {
           return rules.regular_ire;
         }
 
@@ -2066,7 +2096,7 @@
         // Fallback
         return {
           pattern: "Pattern not available for this verb",
-          note: "This verb may follow an uncommon irregular pattern"
+          note: "This verb may follow an uncommon irregular pattern",
         };
       }
 
@@ -2077,18 +2107,20 @@
 
         if (ruleDiv.style.display === "none") {
           const rule = getConjugationRule(currentVerb, currentTense);
-          
+
           let ruleHtml = `<div style="font-weight: 600; color: #495057; margin-bottom: 8px;">📚 Conjugation Rule:</div>`;
           ruleHtml += `<div style="font-weight: 500; color: #6c757d; margin-bottom: 6px;">${rule.pattern}</div>`;
-          
+
           if (rule.examples) {
-            ruleHtml += `<div style="font-size: 0.85em; color: #6c757d; margin-bottom: 6px;"><strong>Examples:</strong> ${rule.examples.join('; ')}</div>`;
+            ruleHtml += `<div style="font-size: 0.85em; color: #6c757d; margin-bottom: 6px;"><strong>Examples:</strong> ${rule.examples.join(
+              "; "
+            )}</div>`;
           }
-          
+
           if (rule.note) {
             ruleHtml += `<div style="font-size: 0.85em; color: #495057; margin-bottom: 6px;"><strong>Note:</strong> ${rule.note}</div>`;
           }
-          
+
           if (rule.similar) {
             ruleHtml += `<div style="font-size: 0.85em; color: #6c757d;"><strong>Similar verbs:</strong> ${rule.similar}</div>`;
           }
@@ -2213,6 +2245,7 @@
       }
 
       // Check the user's answer
+      // Check the user's answer
       function checkAnswer() {
         const userAnswer = document.getElementById("answerInput").value.trim();
 
@@ -2223,17 +2256,90 @@
 
         attempts++;
 
-        // Normalize both answers for comparison
-        const normalizedUser = normalizeText(userAnswer);
-        const normalizedCorrect = normalizeText(currentAnswer);
-
-        if (normalizedUser === normalizedCorrect) {
-          // Correct answer
+        // Check if answer is correct using flexible matching
+        if (isAnswerCorrect(userAnswer, currentAnswer)) {
           handleCorrectAnswer();
         } else {
-          // Wrong answer
           handleWrongAnswer(userAnswer);
         }
+      }
+
+      // New function to handle flexible answer checking
+      function isAnswerCorrect(userAnswer, correctAnswer) {
+        // Normalize both answers for basic comparison
+        const normalizedUser = normalizeText(userAnswer);
+        const normalizedCorrect = normalizeText(correctAnswer);
+
+        // Direct match
+        if (normalizedUser === normalizedCorrect) {
+          return true;
+        }
+
+        // Handle gender/number agreement for past participles with essere
+        if (correctAnswer.includes("/")) {
+          // Split on common patterns like "stato/a" or "stati/e"
+          const variations = generateGenderNumberVariations(correctAnswer);
+          return variations.some(
+            (variation) => normalizeText(variation) === normalizedUser
+          );
+        }
+
+        return false;
+      }
+
+      // Generate all valid gender/number variations
+      // Generate all valid gender/number variations
+      function generateGenderNumberVariations(correctAnswer) {
+        const variations = [correctAnswer]; // Include the original "sia andato/a"
+
+        if (correctAnswer.includes("/")) {
+          const words = correctAnswer.split(" ");
+
+          // Generate all combinations by expanding each word with "/"
+          const generateCombinations = (
+            wordArray,
+            currentIndex = 0,
+            currentCombination = []
+          ) => {
+            if (currentIndex === wordArray.length) {
+              variations.push(currentCombination.join(" "));
+              return;
+            }
+
+            const word = wordArray[currentIndex];
+            if (word.includes("/")) {
+              // Split "andato/a" into ["andato", "a"] and create "andato" and "andata"
+              const parts = word.split("/");
+              const base = parts[0];
+              const altEnding = parts[1];
+
+              // First option: just the base (e.g., "andato")
+              generateCombinations(wordArray, currentIndex + 1, [
+                ...currentCombination,
+                base,
+              ]);
+
+              // Second option: base with ending swapped (e.g., "andata")
+              const baseRoot = base.slice(0, -1); // Remove last letter
+              const altForm = baseRoot + altEnding;
+              generateCombinations(wordArray, currentIndex + 1, [
+                ...currentCombination,
+                altForm,
+              ]);
+            } else {
+              // Regular word, just add it
+              generateCombinations(wordArray, currentIndex + 1, [
+                ...currentCombination,
+                word,
+              ]);
+            }
+          };
+
+          generateCombinations(words);
+        }
+
+        // Remove duplicates and return
+        return [...new Set(variations)];
       }
 
       // Handle correct answer
