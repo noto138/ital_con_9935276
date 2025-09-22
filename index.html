@@ -2290,13 +2290,12 @@
       // Generate all valid gender/number variations
       // Generate all valid gender/number variations
       function generateGenderNumberVariations(correctAnswer) {
-        const variations = [correctAnswer]; // Include the original
+        const variations = [correctAnswer]; // Include the original "sia andato/a"
 
-        // Handle patterns like "sono stati/e", "sei andato/a", etc.
         if (correctAnswer.includes("/")) {
           const words = correctAnswer.split(" ");
 
-          // Find all possible combinations
+          // Generate all combinations by expanding each word with "/"
           const generateCombinations = (
             wordArray,
             currentIndex = 0,
@@ -2309,14 +2308,24 @@
 
             const word = wordArray[currentIndex];
             if (word.includes("/")) {
-              // Split the word and try each option
-              const options = word.split("/");
-              options.forEach((option) => {
-                generateCombinations(wordArray, currentIndex + 1, [
-                  ...currentCombination,
-                  option,
-                ]);
-              });
+              // Split "andato/a" into ["andato", "a"] and create "andato" and "andata"
+              const parts = word.split("/");
+              const base = parts[0];
+              const altEnding = parts[1];
+
+              // First option: just the base (e.g., "andato")
+              generateCombinations(wordArray, currentIndex + 1, [
+                ...currentCombination,
+                base,
+              ]);
+
+              // Second option: base with ending swapped (e.g., "andata")
+              const baseRoot = base.slice(0, -1); // Remove last letter
+              const altForm = baseRoot + altEnding;
+              generateCombinations(wordArray, currentIndex + 1, [
+                ...currentCombination,
+                altForm,
+              ]);
             } else {
               // Regular word, just add it
               generateCombinations(wordArray, currentIndex + 1, [
