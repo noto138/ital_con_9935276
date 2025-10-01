@@ -3247,6 +3247,7 @@
         verbLevelStart: "beginner",
         verbLevelEnd: "advanced",
         selectedTenses: [...basicTenses],
+        regularityFilter: "all", // ADD THIS LINE
       };
 
       // Function to pronounce Italian words using ResponsiveVoice
@@ -3318,11 +3319,33 @@
         const endIndex = levelOrder.indexOf(settings.verbLevelEnd);
         const targetLevels = levelOrder.slice(startIndex, endIndex + 1);
 
-        return Object.keys(verbDatabase).filter((verb) =>
-          targetLevels.includes(verbDatabase[verb].difficulty)
-        );
-      }
+        return Object.keys(verbDatabase).filter((verb) => {
+          const verbData = verbDatabase[verb];
 
+          // Check difficulty level
+          if (!targetLevels.includes(verbData.difficulty)) {
+            return false;
+          }
+
+          // Check regularity filter
+          if (settings.regularityFilter === "all") {
+            return true;
+          } else if (settings.regularityFilter === "regular") {
+            return verbData.regular === "regular";
+          } else if (settings.regularityFilter === "regular_mostly") {
+            return (
+              verbData.regular === "regular" ||
+              verbData.regular === "mostly_regular"
+            );
+          } else if (settings.regularityFilter === "mostly_regular") {
+            return verbData.regular === "mostly_regular";
+          } else if (settings.regularityFilter === "irregular") {
+            return verbData.regular === "irregular";
+          }
+
+          return true;
+        });
+      }
       // Get available tenses based on selected tenses
       function getAvailableTenses(verb) {
         const verbData = verbDatabase[verb];
@@ -3868,6 +3891,8 @@
       function updateSettings() {
         const levelStart = document.getElementById("verbLevelStart").value;
         const levelEnd = document.getElementById("verbLevelEnd").value;
+        const regularityFilter =
+          document.getElementById("regularityFilter").value;
 
         // Ensure end level is not before start level
         const levelOrder = ["beginner", "intermediate", "advanced"];
@@ -3882,6 +3907,7 @@
         }
 
         settings.verbLevelStart = levelStart;
+        settings.regularityFilter = regularityFilter; // ADD THIS LINE
 
         console.log("Settings updated:", settings);
       }
