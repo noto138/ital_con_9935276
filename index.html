@@ -3817,8 +3817,19 @@
             input.focus();
           }, 1500);
         } else {
+          // Build attempts display - show all attempts made
+          let attemptsText = "";
+          if (currentVerbAttempts.length > 0) {
+            attemptsText =
+              currentVerbAttempts
+                .map(
+                  (attempt, index) => `Your answer #${index + 1}: ${attempt}`
+                )
+                .join("<br>") + "<br><br>";
+          }
+
           showFeedback(
-            `Incorrect. The answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
+            `${attemptsText}Incorrect. The answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
             "error"
           );
           input.disabled = true;
