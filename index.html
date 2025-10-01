@@ -478,6 +478,20 @@
               </div>
             </div>
 
+            <div style="text-align: center; margin-bottom: 15px">
+              <div
+                style="
+                  background: #e8f4f8;
+                  padding: 10px;
+                  border-radius: 8px;
+                  display: inline-block;
+                "
+              >
+                <strong>Available verbs:</strong>
+                <span id="availableVerbCount">0</span>
+              </div>
+            </div>
+
             <div class="settings-panel">
               <div class="settings-row">
                 <div class="settings-group">
@@ -3338,6 +3352,28 @@
         return regularityText + (auxiliaryText ? "<br>" + auxiliaryText : "");
       }
 
+      // Update available verb count display
+      function updateAvailableVerbCount() {
+        const availableVerbs = getAvailableVerbs();
+        const countElement = document.getElementById("availableVerbCount");
+        if (countElement) {
+          countElement.textContent = availableVerbs.length;
+
+          // Optional: Change color based on count
+          const parent = countElement.parentElement;
+          if (availableVerbs.length === 0) {
+            parent.style.background = "#f8d7da";
+            parent.style.color = "#721c24";
+          } else if (availableVerbs.length < 5) {
+            parent.style.background = "#fff3cd";
+            parent.style.color = "#856404";
+          } else {
+            parent.style.background = "#e8f4f8";
+            parent.style.color = "#0c5460";
+          }
+        }
+      }
+
       // Get available verbs based on current difficulty range
       function getAvailableVerbs() {
         const levelOrder = ["beginner", "intermediate", "advanced"];
@@ -3958,7 +3994,6 @@
         const regularityFilter =
           document.getElementById("regularityFilter").value;
 
-        // Ensure end level is not before start level
         const levelOrder = ["beginner", "intermediate", "advanced"];
         const startIndex = levelOrder.indexOf(levelStart);
         const endIndex = levelOrder.indexOf(levelEnd);
@@ -3971,10 +4006,13 @@
         }
 
         settings.verbLevelStart = levelStart;
-        settings.regularityFilter = regularityFilter; // ADD THIS LINE
+        settings.regularityFilter = regularityFilter;
+
+        updateAvailableVerbCount(); // ADD THIS LINE
 
         console.log("Settings updated:", settings);
       }
+
       // Tab switching functionality
       function setupTabSwitching() {
         document.querySelectorAll(".tab").forEach((tab) => {
@@ -3999,6 +4037,7 @@
         updateSettings();
         updateStatsDisplay();
         updateRecentMistakes();
+        updateAvailableVerbCount();
 
         console.log("Italian Conjugation Practice app initialized");
         console.log("Available verbs:", Object.keys(verbDatabase).length);
