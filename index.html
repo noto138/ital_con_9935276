@@ -123,6 +123,15 @@
         margin-bottom: 8px;
       }
 
+      .settings-group select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        font-size: 1em;
+        background: white;
+      }
+
       .level-range {
         display: flex;
         align-items: center;
@@ -484,6 +493,20 @@
                       <option value="beginner">Beginner</option>
                       <option value="intermediate">Intermediate</option>
                       <option value="advanced" selected>Advanced</option>
+                    </select>
+                  </div>
+                  <div class="settings-group">
+                    <label>Verb Regularity:</label>
+                    <select id="regularityFilter" onchange="updateSettings()">
+                      <option value="all">All Verbs</option>
+                      <option value="regular">Regular Only</option>
+                      <option value="regular_mostly">
+                        Regular + Mostly Regular
+                      </option>
+                      <option value="mostly_regular">
+                        Mostly Regular Only
+                      </option>
+                      <option value="irregular">Irregular Only</option>
                     </select>
                   </div>
                 </div>
