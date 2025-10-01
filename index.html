@@ -3233,6 +3233,9 @@
       let attempts = 0;
       let maxAttempts = 3;
 
+      // Track user attempts for current verb
+      let currentVerbAttempts = [];
+
       // Statistics
       let stats = {
         correct: 0,
@@ -3535,6 +3538,7 @@
 
         // Reset attempts
         attempts = 0;
+        currentVerbAttempts = [];
 
         // Display the challenge
         displayChallenge();
@@ -3594,7 +3598,6 @@
       }
 
       // Check the user's answer
-      // Check the user's answer
       function checkAnswer() {
         const userAnswer = document.getElementById("answerInput").value.trim();
 
@@ -3604,6 +3607,9 @@
         }
 
         attempts++;
+
+        // Store the user's answer
+        currentVerbAttempts.push(userAnswer); // ADD THIS LINE
 
         // Check if answer is correct using flexible matching
         if (isAnswerCorrect(userAnswer, currentAnswer)) {
@@ -3692,6 +3698,7 @@
       }
 
       // Handle correct answer
+      // Handle correct answer
       function handleCorrectAnswer() {
         const input = document.getElementById("answerInput");
         input.className = "answer-input correct";
@@ -3708,7 +3715,21 @@
 
         updateStatsDisplay();
 
-        showFeedback(`Correct! 🎉 Click "New Verb" to continue.`, "success");
+        // Build attempts display if there were previous attempts
+        let attemptsText = "";
+        if (currentVerbAttempts.length > 1) {
+          // More than 1 means there were wrong attempts before the correct one
+          const wrongAttempts = currentVerbAttempts.slice(0, -1); // All but the last (correct) attempt
+          attemptsText =
+            wrongAttempts
+              .map((attempt, index) => `Your answer #${index + 1}: ${attempt}`)
+              .join("<br>") + "<br><br>";
+        }
+
+        showFeedback(
+          `${attemptsText}Correct! 🎉 Click "New Verb" to continue.`,
+          "success"
+        );
       }
 
       // Handle wrong answer
@@ -3765,8 +3786,17 @@
         input.className = "answer-input";
         input.disabled = true;
 
+        // Build attempts display
+        let attemptsText = "";
+        if (currentVerbAttempts.length > 0) {
+          attemptsText =
+            currentVerbAttempts
+              .map((attempt, index) => `Your answer #${index + 1}: ${attempt}`)
+              .join("<br>") + "<br><br>";
+        }
+
         showFeedback(
-          `The correct answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
+          `${attemptsText}The correct answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
           "info"
         );
 
