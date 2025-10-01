@@ -123,6 +123,15 @@
         margin-bottom: 8px;
       }
 
+      .settings-group select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        font-size: 1em;
+        background: white;
+      }
+
       .level-range {
         display: flex;
         align-items: center;
@@ -484,6 +493,20 @@
                       <option value="beginner">Beginner</option>
                       <option value="intermediate">Intermediate</option>
                       <option value="advanced" selected>Advanced</option>
+                    </select>
+                  </div>
+                  <div class="settings-group">
+                    <label>Verb Regularity:</label>
+                    <select id="regularityFilter" onchange="updateSettings()">
+                      <option value="all">All Verbs</option>
+                      <option value="regular">Regular Only</option>
+                      <option value="regular_mostly">
+                        Regular + Mostly Regular
+                      </option>
+                      <option value="mostly_regular">
+                        Mostly Regular Only
+                      </option>
+                      <option value="irregular">Irregular Only</option>
                     </select>
                   </div>
                 </div>
@@ -3250,6 +3273,7 @@
         verbLevelStart: "beginner",
         verbLevelEnd: "advanced",
         selectedTenses: [...basicTenses],
+        regularityFilter: "all", // ADD THIS LINE
       };
 
       // Function to pronounce Italian words using ResponsiveVoice
@@ -3321,11 +3345,33 @@
         const endIndex = levelOrder.indexOf(settings.verbLevelEnd);
         const targetLevels = levelOrder.slice(startIndex, endIndex + 1);
 
-        return Object.keys(verbDatabase).filter((verb) =>
-          targetLevels.includes(verbDatabase[verb].difficulty)
-        );
-      }
+        return Object.keys(verbDatabase).filter((verb) => {
+          const verbData = verbDatabase[verb];
 
+          // Check difficulty level
+          if (!targetLevels.includes(verbData.difficulty)) {
+            return false;
+          }
+
+          // Check regularity filter
+          if (settings.regularityFilter === "all") {
+            return true;
+          } else if (settings.regularityFilter === "regular") {
+            return verbData.regular === "regular";
+          } else if (settings.regularityFilter === "regular_mostly") {
+            return (
+              verbData.regular === "regular" ||
+              verbData.regular === "mostly_regular"
+            );
+          } else if (settings.regularityFilter === "mostly_regular") {
+            return verbData.regular === "mostly_regular";
+          } else if (settings.regularityFilter === "irregular") {
+            return verbData.regular === "irregular";
+          }
+
+          return true;
+        });
+      }
       // Get available tenses based on selected tenses
       function getAvailableTenses(verb) {
         const verbData = verbDatabase[verb];
@@ -3771,8 +3817,19 @@
             input.focus();
           }, 1500);
         } else {
+          // Build attempts display - show all attempts made
+          let attemptsText = "";
+          if (currentVerbAttempts.length > 0) {
+            attemptsText =
+              currentVerbAttempts
+                .map(
+                  (attempt, index) => `Your answer #${index + 1}: ${attempt}`
+                )
+                .join("<br>") + "<br><br>";
+          }
+
           showFeedback(
-            `Incorrect. The answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
+            `${attemptsText}Incorrect. The answer is: <strong>${currentAnswer}</strong><br>Click "New Verb" to continue.`,
             "error"
           );
           input.disabled = true;
@@ -3898,6 +3955,8 @@
       function updateSettings() {
         const levelStart = document.getElementById("verbLevelStart").value;
         const levelEnd = document.getElementById("verbLevelEnd").value;
+        const regularityFilter =
+          document.getElementById("regularityFilter").value;
 
         // Ensure end level is not before start level
         const levelOrder = ["beginner", "intermediate", "advanced"];
@@ -3912,10 +3971,10 @@
         }
 
         settings.verbLevelStart = levelStart;
+        settings.regularityFilter = regularityFilter; // ADD THIS LINE
 
         console.log("Settings updated:", settings);
       }
-
       // Tab switching functionality
       function setupTabSwitching() {
         document.querySelectorAll(".tab").forEach((tab) => {
